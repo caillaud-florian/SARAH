@@ -1,8 +1,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Window.hpp>
-#include <SFML/OpenGL.hpp>
+
+#include "Kernel/Handler.hpp"
 
 
 ////////////////////////////////////////////////////////////
@@ -13,6 +13,15 @@
 ////////////////////////////////////////////////////////////
 int main()
 {
+    // Request a 32-bits depth buffer when creating the window
+    sf::ContextSettings contextSettings;
+    contextSettings.depthBits = 32;
+
+    Sarah::Kernel::Handler vHandler(contextSettings);
+
+    vHandler.Init();
+
+/*    
     // Request a 32-bits depth buffer when creating the window
     sf::ContextSettings contextSettings;
     contextSettings.depthBits = 32;
@@ -43,7 +52,7 @@ int main()
     glLoadIdentity();
     GLfloat ratio = static_cast<float>(window.getSize().x) / window.getSize().y;
     glFrustum(-ratio, ratio, -1.f, 1.f, 1.f, 500.f);
-
+*/
     // Define a 3D cube (6 faces made of 2 triangles composed by 3 vertices)
     GLfloat cube[] =
     {
@@ -91,6 +100,8 @@ int main()
          50,  50,  50,  1, 1, 0, 1,
     };
 
+    vHandler.Load(cube);
+/*
     // Enable position and color vertex components
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
@@ -103,7 +114,7 @@ int main()
 
     // Create a clock for measuring the time elapsed
     sf::Clock clock;
-
+*//*
     // Start the game loop
     while (window.isOpen())
     {
@@ -141,6 +152,9 @@ int main()
         // Finally, display the rendered frame on screen
         window.display();
     }
+*/
+
+    vHandler.MainLoop();
 
     return EXIT_SUCCESS;
 }

@@ -3,7 +3,7 @@
 srcdirs := src 
 incdirs := include
 bindir := bin
-bin := vision3D
+bin := SarahProject
 objdir := .make.cache
 makedir := .make.cache
 resdir := ../resources
@@ -27,7 +27,7 @@ output_executable := $(bin)
 
 
 all: $(bindir)/$(output_executable)
-	@echo "$(output_executable) Ready to manage images, Sir."
+	@echo "$(output_executable) Ready to use, but with caution please."
 	
 $(bindir)/$(output_executable): $(objs) | $(bindir)
 	@echo Linking...
