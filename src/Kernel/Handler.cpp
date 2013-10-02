@@ -13,11 +13,16 @@ Handler::Handler():
 
 }
 
-Handler::Handler(sf::ContextSettings p_contextSettings):
-	m_mainWindow(sf::VideoMode(640, 480), "SFML window with OpenGL", sf::Style::Default, p_contextSettings),
+Handler::Handler(GeneralConfig p_gConfig):
+    gConfig(p_gConfig),
+	m_mainWindow(),
 	m_generalClock()
 {
-
+    WindowConfig * vWConf;
+    if((vWConf = (WindowConfig *)p_gConfig.GetConfig("WindowConfig")) != nullptr){
+        m_mainWindow.create(vWConf->videoMode, vWConf->title, 
+                            vWConf->style, vWConf->contextSettings);
+    }
 }
 
 Handler::~Handler()

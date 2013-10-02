@@ -4,10 +4,13 @@
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 
+#include "Kernel/GeneralConfig.hpp"
+
 namespace Sarah
 {
 namespace Kernel
 {
+	typedef Kernel::GeneralConfig GeneralConfig;
 
 	class Handler
 	{
@@ -16,7 +19,7 @@ namespace Kernel
 			// Constructeur et destructeur
 			Handler();
 
-			Handler(sf::ContextSettings);
+			Handler(GeneralConfig);
 
 			~Handler();
 
@@ -26,6 +29,10 @@ namespace Kernel
 			bool Load(GLfloat *);
 
 			bool MainLoop();
+
+		public:
+
+			GeneralConfig gConfig;
 
 		private:
 

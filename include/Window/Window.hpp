@@ -20,6 +20,9 @@ namespace Window
 		private:
 
 			sf::ContextSettings m_contextSettings;
+
+			//TODO : ContextSettings à enlever, déjà géré dans WindowConfig.
+			//		Voir pour mettre d'autre fonctionnalité dans cette classe qui sera surement utile !!
 	};
 }	
 }
