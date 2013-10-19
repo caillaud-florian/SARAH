@@ -19,7 +19,7 @@ namespace Utils
 			std::cout << "lecture" << std::endl;
 		}
 
-		if(!m_file.good){
+		if(!m_file.good()){
 			//TODO : faire une fonction dans Reader pour répertorier les erreurs survenus
 			std::cout << "pas ok" << std::endl;
 		}

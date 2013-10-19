@@ -15,6 +15,8 @@ namespace Utils
 		UNDEFINED
 	};
 
+//TODO : mettre une option pour les commentaires pleine ligne, les commentaires fin de ligne, etc.
+
 	class Reader
 	{
 		public:
@@ -28,6 +30,19 @@ namespace Utils
 			FileReadState GetState() const;
 
 			virtual bool Read() = 0;
+
+			bool getLine(std::string & p_line, unsigned int p_readingSize = 256)
+			{
+				char * vLine = new char[p_readingSize];
+				if(!m_file.getline (vLine, p_readingSize)){
+					delete vLine;
+					return false;
+				}else{
+					p_line = std::string(vLine);
+					delete vLine;
+					return true;
+				}
+			}
 
 		protected:
 
