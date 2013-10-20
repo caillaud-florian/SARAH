@@ -20,6 +20,14 @@ namespace Utils
 
 	bool GetFileNameAndExtension(const std::string &, std::string &, std::string &);
 
+	std::string WithoutChar(const std::string &, char);
+
+	std::string WithoutFrontSpace(const std::string &);
+
+	std::string WithoutBackSpace(const std::string &);
+
+	std::string WithoutSpace(const std::string &);
+
 }
 
 #endif	
