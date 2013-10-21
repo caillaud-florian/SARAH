@@ -20,6 +20,8 @@ namespace Utils
 
 	bool GetFileNameAndExtension(const std::string &, std::string &, std::string &);
 
+	bool IsComments(std::string, char);
+
 }
 
 #endif	

@@ -19,13 +19,23 @@ namespace Utils
 	{
 		std::vector<std::string> pathVect = Split(filePath, FILE_DELIMITOR);
 		std::vector<std::string> nameVect = Split(pathVect.back(), EXTENSION_SEPARATOR);
-		
+
 		fileName = nameVect[0];
 
 		if(nameVect.size() <= 1)
 			return false;
 
 		fileExtension = nameVect[1];
+		return true;
+	}
+
+	bool IsComments(std::string line, char commentSign)
+	{
+		for(unsigned int i = 0; i < line.size(); ++i)
+			if(line[i] != ' ' && line[i] != commentSign)
+				return false;
+			else if(line[i] == commentSign)
+				return true;
 		return true;
 	}
 
