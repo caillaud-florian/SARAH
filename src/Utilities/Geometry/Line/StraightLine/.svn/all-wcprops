@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Line/StraightLine
+END
+EqLine.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Line/StraightLine/EqLine.cpp
+END
+PointsLine.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Line/StraightLine/PointsLine.cpp
+END
+Line.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Line/StraightLine/Line.cpp
+END
+ParamLine.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Line/StraightLine/ParamLine.cpp
+END

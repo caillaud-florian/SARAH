@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polygon/Quad
+END
+Rectangle.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polygon/Quad/Rectangle.hpp
+END
+Quad.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polygon/Quad/Quad.hpp
+END
+Diamond.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polygon/Quad/Diamond.hpp
+END
+Square.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polygon/Quad/Square.hpp
+END

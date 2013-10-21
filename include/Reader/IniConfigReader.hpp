@@ -9,7 +9,7 @@
 typedef std::map<std::string, std::string> 	Section;
 typedef std::map<std::string, Section>  	Config;
 
-namespace Utils
+namespace IO
 {
 
 	class IniConfigReader : public Reader

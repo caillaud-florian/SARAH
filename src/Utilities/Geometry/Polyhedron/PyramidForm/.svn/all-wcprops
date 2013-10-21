@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polyhedron/PyramidForm
+END
+RPyramid.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polyhedron/PyramidForm/RPyramid.cpp
+END
+ComplexPyramid.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polyhedron/PyramidForm/ComplexPyramid.cpp
+END
+Cone.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polyhedron/PyramidForm/Cone.cpp
+END

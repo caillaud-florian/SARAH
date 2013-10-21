@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polygon/ComplexPolygon
+END
+ComplexPolygon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polygon/ComplexPolygon/ComplexPolygon.cpp
+END
+RComplexPolygon.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polygon/ComplexPolygon/RComplexPolygon.cpp
+END

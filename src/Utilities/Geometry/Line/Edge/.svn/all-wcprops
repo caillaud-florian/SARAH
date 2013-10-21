@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Line/Edge
+END
+HalfEdge.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Line/Edge/HalfEdge.cpp
+END
+WingedEdge.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Line/Edge/WingedEdge.cpp
+END
+Edge.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Line/Edge/Edge.cpp
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polyhedron/CircleForm
+END
+Torus.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polyhedron/CircleForm/Torus.hpp
+END
+Ellipsoid.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polyhedron/CircleForm/Ellipsoid.hpp
+END
+Sphere.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polyhedron/CircleForm/Sphere.hpp
+END
+Cylinder.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/fcaillau/!svn/ver/3/Utils/trunk/include/Geometry/Polyhedron/CircleForm/Cylinder.hpp
+END

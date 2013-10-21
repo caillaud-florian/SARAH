@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/fcaillau/!svn/ver/4/Utils/trunk/include/BasicTypeOperations
+END
+StringOperation.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/fcaillau/!svn/ver/4/Utils/trunk/include/BasicTypeOperations/StringOperation.hpp
+END
+BasicTypeConverter.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/fcaillau/!svn/ver/4/Utils/trunk/include/BasicTypeOperations/BasicTypeConverter.hpp
+END

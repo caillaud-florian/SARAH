@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/fcaillau/!svn/ver/3/Utils/trunk/include/NMatrix
+END
+BasicNumberOperation.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/fcaillau/!svn/ver/3/Utils/trunk/include/NMatrix/BasicNumberOperation.hpp
+END
+NMatrixUtilities.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/fcaillau/!svn/ver/3/Utils/trunk/include/NMatrix/NMatrixUtilities.hpp
+END
+NMatrix.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/fcaillau/!svn/ver/3/Utils/trunk/include/NMatrix/NMatrix.hpp
+END
+NLine.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/fcaillau/!svn/ver/3/Utils/trunk/include/NMatrix/NLine.hpp
+END

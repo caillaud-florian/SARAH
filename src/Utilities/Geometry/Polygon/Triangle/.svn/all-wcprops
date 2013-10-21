@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polygon/Triangle
+END
+EqTriangle.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polygon/Triangle/EqTriangle.cpp
+END
+IsoTriangle.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polygon/Triangle/IsoTriangle.cpp
+END
+Triangle.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polygon/Triangle/Triangle.cpp
+END
+SquareTriangle.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/fcaillau/!svn/ver/3/Utils/trunk/src/Geometry/Polygon/Triangle/SquareTriangle.cpp
+END

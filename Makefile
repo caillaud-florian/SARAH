@@ -13,7 +13,7 @@ CPPFLAGS :=
 CXXFLAGS := -std=c++0x -g -Wall -pedantic
 LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -lGL
 # Filter input
-srcdirs := $(strip $(srcdirs)
+srcdirs := $(strip $(srcdirs))
 incdirs := $(strip $(incdirs))
 bindir := $(strip $(bindir))
 objdir := $(strip $(objdir))
@@ -36,8 +36,6 @@ $(bindir)/$(output_executable): $(objs) | $(bindir)
 test: $(bindir)/$(output_executable)
 	@echo Running...
 	@cd $(bindir) ; ./$(output_executable)
-
-
 
 $(binresdir)/%: $(resdir)/%
 	@echo "Updating Resource $(notdir $@)..."
@@ -81,7 +79,7 @@ endif
 endif
 
 clean:
-	@rm -rf $(objs) $(wildcard $(bindir)/*$(bin)*) $(binres) $(binresdir) $(wildcard $(makedir)/*$(bin)*)  $(deps)
+	@rm -rf $(objs) $(bindir) $(binres) $(binresdir) $(makedir)  $(deps)
 	@[ -e $(objdir) ] && [ $(objdir) != . ] && find $(objdir) -depth -empty -type d -exec rmdir {} \; || :
 	@[ -e $(bindir) ] && [ $(bindir) != "." ] && find $(bindir) -depth -empty -type d -exec rmdir {} \; || :
 	@[ -e $(makedir) ] && [ $(makedir) != "." ] && find $(makedir) -depth -empty -type d -exec rmdir {} \; || :

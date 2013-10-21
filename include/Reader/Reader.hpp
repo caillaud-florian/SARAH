@@ -1,11 +1,11 @@
 #ifndef READER
 #define READER
 
-#include "File/IOFile.hpp"
+#include "Utilities/File/IOFile.hpp"
 
 #include <regex>
 
-namespace Utils
+namespace IO
 {
 
 	enum FileReadState
@@ -73,7 +73,7 @@ namespace Utils
 
 		protected:
 
-			IFile m_file;
+			gu::IFile m_file;
 			FileReadState m_state;
 	};
 	

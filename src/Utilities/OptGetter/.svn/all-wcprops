@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/fcaillau/!svn/ver/4/Utils/trunk/src/OptGetter
+END
+SimpleOptGetter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/fcaillau/!svn/ver/3/Utils/trunk/src/OptGetter/SimpleOptGetter.cpp
+END
+TaggedOptGetter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/fcaillau/!svn/ver/3/Utils/trunk/src/OptGetter/TaggedOptGetter.cpp
+END
+CommentedParameter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/fcaillau/!svn/ver/3/Utils/trunk/src/OptGetter/CommentedParameter.cpp
+END
+Parameter.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/fcaillau/!svn/ver/3/Utils/trunk/src/OptGetter/Parameter.cpp
+END

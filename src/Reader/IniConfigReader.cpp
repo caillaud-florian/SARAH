@@ -1,6 +1,6 @@
 #include "Reader/IniConfigReader.hpp"
 
-namespace Utils
+namespace IO
 {
 
 	IniConfigReader::IniConfigReader(std::string filePath):
