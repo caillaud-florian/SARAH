@@ -29,7 +29,7 @@ namespace gu
 		return true;
 	}
 
-	bool IsComments(std::string line, char commentSign)
+	bool IsComments(const std::string line, char commentSign)
 	{
 		for(unsigned int i = 0; i < line.size(); ++i)
 			if(line[i] != ' ' && line[i] != commentSign)
@@ -37,6 +37,26 @@ namespace gu
 			else if(line[i] == commentSign)
 				return true;
 		return true;
+	}
+
+	std::string WithoutComments(const std::string line, char commentSign)
+	{
+		std::string outLine;
+		for(std::string::const_iterator it = line.begin(); it != line.end(); ++it)
+		{
+			outLine.push_back(*it);
+
+			if((*it) == commentSign)
+			{
+				for(unsigned int i = outLine.size() - 1; i >= 0; ++i)
+					if(outLine[i] == ' ')
+						outLine.pop_back();
+
+				break;
+			}
+		}
+
+		return outLine;
 	}
 
 	std::string WithoutChar(const std::string & str, char c)

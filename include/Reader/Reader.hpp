@@ -2,6 +2,7 @@
 #define READER
 
 #include "Utilities/File/IOFile.hpp"
+#include "Utilities/Message/Msg.hpp"
 
 #include <regex>
 

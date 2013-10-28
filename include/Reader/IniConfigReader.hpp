@@ -2,6 +2,7 @@
 #define INICONFIGREADER
 
 #include <map>
+#include <vector>
 #include <string>
 
 #include "Reader/Reader.hpp"

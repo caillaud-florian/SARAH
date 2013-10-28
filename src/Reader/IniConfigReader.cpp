@@ -11,31 +11,53 @@ namespace IO
 
 	bool IniConfigReader::Read()
 	{
+		unsigned int vNumLine = 0;
 		std::smatch vStrMatch;
 		std::string vLine;
 		std::string vCurrentSection = "undefined";
+		std::vector<std::string> vPropertyLine;
+		std::string vPropertyName, vPropertyValue;
 
 		//TODO: éliminer les commentaires
 		while(GetLine(vLine))
 		{
-			if(std::regex_match(vLine, vStrMatch, std::regex("[(.+)]") ))
+			vNumLine++;
+
+			if( ! (gu::IsComments(vLine, '#') || gu::IsComments(vLine, ';')) )
 			{
-				if(vStrMatch.size() == 1)
+				if(std::regex_match(vLine, vStrMatch, std::regex("[(.+)]") ))
 				{
-					vCurrentSection = vStrMatch[0];
-					m_config.insert(std::pair<std::string, Section>(vCurrentSection, Section()));
+					if(vStrMatch.size() == 1)
+					{
+						vCurrentSection = vStrMatch[0];
+						m_config.insert(std::pair<std::string, Section>(vCurrentSection, Section()));
+					}
+					else
+					{
+						msg::Msg_Spe(msg::MSG_FLAG_ENUM::ERROR, "Error : Line ", vNumLine, " : Wrong Syntax in Section Declaration");
+						exit(-1);
+					}
 				}
 				else
 				{
-					std::cout << "erreur" << std::endl;
+					vLine = gu::WithoutComments(gu::WithoutComments(vLine, '#'), ';');
+
+					vPropertyLine = gu::Split(vLine, '=');
+
+					if(vPropertyLine.size() == 2)
+					{
+						vPropertyName = gu::WithoutBackSpace(vPropertyLine[0]);
+						vPropertyValue = gu::WithoutFrontSpace(vPropertyLine[1]);
+
+						m_config[vCurrentSection].insert(std::pair<std::string, std::string>(vPropertyName, vPropertyValue));
+					}
+					else
+					{
+						//TODO : peut être gérer quand même l'erreur au lieu d'exit
+						msg::Msg_Spe(msg::MSG_FLAG_ENUM::ERROR, "Error : Line ", vNumLine, " : Wrong Syntax in Property Declaration");
+						exit(-1);
+					}
 				}
-			}
-			else
-			{
-				//Faire un split de la ligne
-				//Faire un nettoyage du premier terme par la droite
-				//Faire un nettoyage du deuxième terme par la gauche
-				//m_config[vCurrentSection].insert(pair(gauche, droite));
 			}
 		}
 

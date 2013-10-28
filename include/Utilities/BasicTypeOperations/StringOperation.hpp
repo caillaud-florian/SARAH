@@ -20,7 +20,9 @@ namespace gu
 
 	bool GetFileNameAndExtension(const std::string &, std::string &, std::string &);
 
-	bool IsComments(std::string, char);
+	bool IsComments(const std::string, char);
+
+	std::string WithoutComments(const std::string, char);
 
 	std::string WithoutChar(const std::string &, char);
 
