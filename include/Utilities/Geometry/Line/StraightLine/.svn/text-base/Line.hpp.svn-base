@@ -1,1 +1,0 @@
-classe d'héritage
