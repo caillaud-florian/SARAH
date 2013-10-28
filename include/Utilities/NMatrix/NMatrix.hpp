@@ -2,7 +2,7 @@
 #define NMATRIX_NMATRIX
 
 #include "NLine.hpp"
-#include "BasicNumberOperation.hpp"
+#include "Utilities/BasicTypeOperations/BasicNumberOperation.hpp"
 
 #define MCOORD(i, j) (((j)*(mWidth)) + (i))
 
