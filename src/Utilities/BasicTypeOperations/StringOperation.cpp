@@ -50,7 +50,7 @@ namespace gu
 			{
 				for(unsigned int i = outLine.size() - 1; i >= 0; ++i)
 					if(outLine[i] == ' ')
-						outLine.pop_back();
+						outLine.resize(outLine.size() - 1);
 
 				break;
 			}

@@ -1,5 +1,7 @@
 #include "Reader/IniConfigReader.hpp"
 
+namespace Sarah
+{
 namespace IO
 {
 
@@ -69,4 +71,6 @@ namespace IO
 		return m_config;
 	}
 	
+}
+
 }

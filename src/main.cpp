@@ -1,11 +1,28 @@
 #include "Kernel/Handler.hpp"
+#include "Reader/IniConfigReader.hpp"
 
+typedef Sarah::IO::IniConfigReader      IniConfigReader; 
 typedef Sarah::Kernel::WindowConfig     WindowConfig;
 typedef Sarah::Kernel::GeneralConfig    GeneralConfig;
 typedef Sarah::Kernel::Handler          Handler;
 
 int main()
 {
+    IniConfigReader iniReader("/home/caillaudf/Bureau/testINI.ini");
+    iniReader.Read();
+
+    std::map<std::string, std::map<std::string, std::string> > config = iniReader.GetConfig();
+
+    for(auto it = config.begin(); it != config.end(); ++it)
+    {
+        std::cout << (*it).first << " :" << std::endl;
+
+        for(auto itbis = (*it).second.begin(); itbis != (*it).second.end(); ++itbis)
+        {
+            std::cout << "\t" << (*itbis).first << " = " << (*itbis).second << std::endl;
+        }
+    }
+
     ///////////////////////////////////////////
     // WINDOW CONFIG
     ///////////////////////////////////////////

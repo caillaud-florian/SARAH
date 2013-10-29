@@ -10,6 +10,9 @@
 typedef std::map<std::string, std::string> 	Section;
 typedef std::map<std::string, Section>  	Config;
 
+namespace Sarah
+{
+	
 namespace IO
 {
 
@@ -30,6 +33,8 @@ namespace IO
 
 	};
 	
+}
+
 }
 
 #endif

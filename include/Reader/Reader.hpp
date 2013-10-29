@@ -6,6 +6,8 @@
 
 #include <regex>
 
+namespace Sarah
+{
 namespace IO
 {
 
@@ -78,6 +80,8 @@ namespace IO
 			FileReadState m_state;
 	};
 	
+}
+
 }
 
 #endif
