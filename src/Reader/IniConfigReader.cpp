@@ -2,11 +2,12 @@
 
 namespace Sarah
 {
+	
 namespace IO
 {
 
-	IniConfigReader::IniConfigReader(std::string filePath):
-		Reader(filePath)
+	IniConfigReader::IniConfigReader(std::string p_filePath):
+		BaseReader(p_filePath)
 	{
 
 	}

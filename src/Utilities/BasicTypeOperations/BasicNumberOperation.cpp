@@ -1,4 +1,4 @@
-#include "Utilities/NMatrix/BasicNumberOperation.hpp"
+#include "Utilities/BasicTypeOperations/BasicNumberOperation.hpp"
 
 #define BNO_QUASI_NULL 0.00000001
 
