@@ -11,7 +11,7 @@ resdir := ../resources
 CXX := g++
 CPPFLAGS := 
 CXXFLAGS := -std=c++0x -g -Wall -pedantic
-LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -lGL
+LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -lGL -lboost_regex
 # Filter input
 srcdirs := $(strip $(srcdirs))
 incdirs := $(strip $(incdirs))

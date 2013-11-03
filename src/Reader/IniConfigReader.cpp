@@ -15,7 +15,9 @@ namespace IO
 	bool IniConfigReader::Read()
 	{
 		unsigned int vNumLine = 0;
-		std::smatch vStrMatch;
+		boost::csmatch vMatches;
+		const boost::regex vSectRegex("\\[.+\\]");
+		std::cout << vStrRegex << std::endl;
 		std::string vLine;
 		std::string vCurrentSection = "undefined";
 		std::vector<std::string> vPropertyLine;
@@ -27,12 +29,12 @@ namespace IO
 			vNumLine++;
 
 			if( ! (gu::IsComments(vLine, '#') || gu::IsComments(vLine, ';')) )
-			{
-				if(std::regex_match(vLine, vStrMatch, std::regex("[(.+)]") ))
+			{				
+				if(boost::regex_match(vLine, vMatches, vSectRegex))
 				{
-					if(vStrMatch.size() == 1)
+					if(vMatches.size() == 1)
 					{
-						vCurrentSection = vStrMatch[0];
+						vCurrentSection = vMatches[0];
 						m_config.insert(std::pair<std::string, Section>(vCurrentSection, Section()));
 					}
 					else
@@ -67,7 +69,7 @@ namespace IO
 		return HasSucceed();
 	}
 
-	Config IniConfigReader::GetConfig() const
+	IniConfigReader::Config IniConfigReader::GetConfig() const
 	{
 		return m_config;
 	}
