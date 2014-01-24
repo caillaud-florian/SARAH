@@ -8,7 +8,7 @@ typedef Sarah::Kernel::Handler          Handler;
 
 int main()
 {
-    IniConfigReader iniReader("/home/caillaudf/Bureau/testINI.ini");
+    IniConfigReader iniReader("/home/imagine/Bureau/testINI.ini");
     iniReader.Read();
 
     std::map<std::string, std::map<std::string, std::string> > config = iniReader.GetConfig();

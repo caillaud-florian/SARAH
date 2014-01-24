@@ -67,7 +67,7 @@ namespace IO
 		return HasSucceed();
 	}
 
-	Config IniConfigReader::GetConfig() const
+	IniConfigReader::Config IniConfigReader::GetConfig() const
 	{
 		return m_config;
 	}
