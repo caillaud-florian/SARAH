@@ -7,10 +7,11 @@ namespace Kernel
 
 // Constructeur et destructeur
 Handler::Handler():
+    gConfig(),
 	m_mainWindow(),
 	m_generalClock()
 {
-
+    m_mainWindow.create(sf::VideoMode(800, 600), "My window");
 }
 
 Handler::Handler(GeneralConfig p_gConfig):

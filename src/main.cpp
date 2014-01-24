@@ -42,8 +42,8 @@ int main()
     ///////////////////////////////////////////
     // HANDLER INIT
     ///////////////////////////////////////////
-    Handler vHandler(gConf);
-    vHandler.Init();
+    //Handler vHandler(gConf);
+    //vHandler.Init();
 
     ///////////////////////////////////////////
     // HANDLER MESH LOADING
@@ -94,12 +94,12 @@ int main()
          50,  50,  50,  1, 1, 0, 1,
     };
 
-    vHandler.Load(cube);
+    //vHandler.Load(cube);
 
     ///////////////////////////////////////////
     // APPLICATION MAIN LOOP
     ///////////////////////////////////////////
-    vHandler.MainLoop();
+    //vHandler.MainLoop();
 
     return EXIT_SUCCESS;
 }
