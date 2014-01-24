@@ -13,7 +13,7 @@
 #include "Utilities/File/IOFile.hpp"
 #include "Utilities/Message/Msg.hpp"
 
-#include <regex>
+#include <boost/regex.hpp>
 
 /**
  * \namespace 	Nom de domaine principal.

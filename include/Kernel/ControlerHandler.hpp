@@ -1,20 +1,22 @@
 /**
- * \file		Handler.hpp
+ * \file		ControlerHandler.hpp
  * \author		fcaillaud
  * \version 	0.1
  * \date     	28 Octobre 2013
  * \brief     	Fichier implémentant le controleur de la plateforme SARAH.
- * \detail		Cet objet, unique (pour le moment) au sein de la plateforme lors de l'execution
+ * \detail		Cet objet représente la partie CONTROLLEUR au sein de la plateforme lors de l'execution
  *				sert à gérer les différents modules de la plateforme.
  */
 
-#ifndef HANDLER
-#define HANDLER
+#ifndef CONTROLERHANDLER
+#define CONTROLERHANDLER
 
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 
 #include "Kernel/GeneralConfig.hpp"
+#include "Kernel/GraphicHandler.hpp"
+#include "Kernel/ModelHandler.hpp"
 
 /**
  * \namespace 	Nom de domaine principal.
@@ -32,16 +34,16 @@ namespace Kernel
 	typedef Kernel::GeneralConfig GeneralConfig;
 
 	/**
-	 * \class 	Classe Handler permettant de gérer tous les module de la plateforme.
+	 * \class 	Classe ControlerHandler permettant de gérer tous les modules de la plateforme.
 	 */
-	class Handler
+	class ControlerHandler
 	{
 		public:
 
 			/*
 			 * \fn 		Constructeur par défaut
 			 */
-			Handler();
+			ControlerHandler();
 
 			/*
 			 * \fn 		Constructeur paramétré
@@ -49,12 +51,12 @@ namespace Kernel
 			 * \param 	p_generalConfig 	Objet représentant une configuration générale 
 			 *			et avec lequel on initialise le controleur.
 			 */
-			Handler(GeneralConfig);
+			ControlerHandler(GeneralConfig &);
 
 			/**
 			 * \fn 		Destructeur
 			 */
-			~Handler();
+			~ControlerHandler();
 
 			/**
 			 * \fn 		Initialisation de la plateforme SARAH
@@ -63,17 +65,14 @@ namespace Kernel
 			bool Init();
 
 			/**
-			 * \fn		Chargement d'un objet dans la plateforme
-			 * \param 	p_mesh	Liste de points formés en triangles.
-			 * \return 	true si le chargement s'est bien passé, false sinon.
-			 */
-			bool Load(GLfloat *);
-
-			/**
 			 * \fn 		Boucle principale d'évènements
 			 * \return 	true si la boucle a été quittée correctement, false sinon.
 			 */
 			bool MainLoop();
+
+		protected:
+
+			sf::Window & GetWindow();
 
 		public:
 
@@ -86,18 +85,14 @@ namespace Kernel
 
 		private:
 
-			/**
-			 * \brief 	Fenêtre principale (de type SFML Window).
-			 */
-			sf::Window m_mainWindow;
+			GraphicHandler m_graphicHandler;
+
+			ModelHandler m_modelHandler;
 			/**
 			 * \brief 	Horloge permettant un contexte temporel principal (de type SFML Clock).
 			 */
 			sf::Clock m_generalClock;
-			/**
-			 * \brief 	Pointeur vers le maillage chargé dans la plateforme.
-			 */
-			GLfloat * m_loadedMesh;
+
 	};
 
 }

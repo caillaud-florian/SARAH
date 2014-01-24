@@ -44,16 +44,10 @@ namespace gu
 		std::string outLine;
 		for(std::string::const_iterator it = line.begin(); it != line.end(); ++it)
 		{
-			outLine.push_back(*it);
-
 			if((*it) == commentSign)
-			{
-				for(unsigned int i = outLine.size() - 1; i >= 0; ++i)
-					if(outLine[i] == ' ')
-						outLine.resize(outLine.size() - 1);
-
-				break;
-			}
+				return WithoutBackSpace(outLine);
+			else
+				outLine.push_back(*it);
 		}
 
 		return outLine;
@@ -82,7 +76,10 @@ namespace gu
 			if(copy)
 				res.push_back((*it));
 			else if((*it) != ' ')
+			{
 				copy = true;
+				res.push_back((*it));
+			}
 		}
 
 		return res;
@@ -97,7 +94,10 @@ namespace gu
 			if(copy)
 				tmp.push_back((*it));
 			else if((*it) != ' ')
+			{
 				copy = true;
+				tmp.push_back((*it));
+			}
 
 		for(std::string::reverse_iterator it = tmp.rbegin(); it != tmp.rend(); ++it)
 			res.push_back((*it));

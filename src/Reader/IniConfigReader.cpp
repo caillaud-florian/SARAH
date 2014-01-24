@@ -15,24 +15,25 @@ namespace IO
 	bool IniConfigReader::Read()
 	{
 		unsigned int vNumLine = 0;
-		std::smatch vStrMatch;
+		boost::smatch vMatches;
+		const boost::regex vSectRegex("\\s*\\[.+\\]\\s*");
 		std::string vLine;
 		std::string vCurrentSection = "undefined";
 		std::vector<std::string> vPropertyLine;
 		std::string vPropertyName, vPropertyValue;
 
-		//TODO: éliminer les commentaires
 		while(GetLine(vLine))
 		{
 			vNumLine++;
-
+			//Si la ligne n'est pas un commentaire (# .... ou ; ....)
 			if( ! (gu::IsComments(vLine, '#') || gu::IsComments(vLine, ';')) )
-			{
-				if(std::regex_match(vLine, vStrMatch, std::regex("[(.+)]") ))
+			{				
+				if(boost::regex_match(vLine, vMatches, vSectRegex))
 				{
-					if(vStrMatch.size() == 1)
+					if(vMatches.size() == 1)
 					{
-						vCurrentSection = vStrMatch[0];
+						vCurrentSection = gu::WithoutChar(gu::WithoutChar(vMatches[0], ']'), '[');
+						vCurrentSection = gu::WithoutFrontSpace(gu::WithoutBackSpace(vCurrentSection));
 						m_config.insert(std::pair<std::string, Section>(vCurrentSection, Section()));
 					}
 					else
@@ -49,8 +50,8 @@ namespace IO
 
 					if(vPropertyLine.size() == 2)
 					{
-						vPropertyName = gu::WithoutBackSpace(vPropertyLine[0]);
-						vPropertyValue = gu::WithoutFrontSpace(vPropertyLine[1]);
+						vPropertyName = gu::WithoutFrontSpace(gu::WithoutBackSpace(vPropertyLine[0]));
+						vPropertyValue = gu::WithoutFrontSpace(gu::WithoutBackSpace(vPropertyLine[1]));
 
 						m_config[vCurrentSection].insert(std::pair<std::string, std::string>(vPropertyName, vPropertyValue));
 					}
