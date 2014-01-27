@@ -1,5 +1,6 @@
 #include "Kernel/ControlerHandler.hpp"
 #include "Reader/IniConfigReader.hpp"
+#include "Kernel/GraphicHandlerBuilder.hpp"
 
 typedef Sarah::IO::IniConfigReader      IniConfigReader; 
 typedef Sarah::Kernel::WindowConfig     WindowConfig;
@@ -32,6 +33,15 @@ int main()
     wConf->videoMode = sf::VideoMode(600, 300);
     wConf->contextSettings.depthBits = 32;
     wConf->Print();
+
+//////test builder///////
+
+    GeneralConfig testConfig;
+
+    Sarah::Kernel::GraphicHandlerBuilder builder;
+
+    builder(testConfig);
+
 
     ///////////////////////////////////////////
     // GENERAL CONFIG

@@ -16,11 +16,7 @@ namespace Sarah
  */	
 namespace Kernel
 {
-	/**
-	 * \typedef	\a Kernel::GeneralConfig devient \a GeneralConfig pour plus de simplicité pour l'utilisateur.
-	 */
-	typedef Kernel::GeneralConfig GeneralConfig;
-
+	
 	class ControlerHandler;
 
 	/**
