@@ -11,7 +11,7 @@ GraphicHandler::GraphicHandler():
 	m_mainWindow(),
 	m_generalClock()
 {
-    m_mainWindow.create(sf::VideoMode(800, 600), "My window");
+    
 }
 
 GraphicHandler::GraphicHandler(GeneralConfig & p_gConfig):

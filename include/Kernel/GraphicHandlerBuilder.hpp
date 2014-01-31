@@ -35,7 +35,7 @@ namespace Kernel
 		public:
 
 			//TODO : permettre de REbuilder sans avoir a relire la config (conservation de la derniere config)
-			GraphicHandler & operator()(GeneralConfig & config)
+			void operator()(GeneralConfig & config, GraphicHandler & graphHandler)
 			{
 				BaseConfig * windowConfig;
 				std::string configName = "WindowConfig";
@@ -44,20 +44,15 @@ namespace Kernel
 				unsigned int width = 300, heigth = 200, bpp = 32;
 				int style = sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close;
 
+				windowConfig = config.GetConfig(configName);
 				//si il n'y a pas de section WindowConfig -> config par défaut
-				if(!(windowConfig = config.GetConfig(configName)))
-				{
-					//default config
-				}
 				//sinon, les propriétés spécifiées sont gérées, les autres sont mises par défaut
-				else
+				if(windowConfig != nullptr)
 				{
-					//custom config
+					//démerde toi !!
 				}
-
-				GraphicHandler res;
-
-				return res;
+				
+				graphHandler.m_mainWindow.create(sf::VideoMode(width, heigth, bpp), title, style);
 			}
 
 	};

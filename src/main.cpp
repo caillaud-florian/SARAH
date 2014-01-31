@@ -38,9 +38,11 @@ int main()
 
     GeneralConfig testConfig;
 
+    Sarah::Kernel::GraphicHandler graphHandler;    
+
     Sarah::Kernel::GraphicHandlerBuilder builder;
 
-    builder(testConfig);
+    builder(testConfig, graphHandler);
 
 
     ///////////////////////////////////////////

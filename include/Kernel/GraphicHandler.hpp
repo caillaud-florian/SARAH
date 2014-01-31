@@ -25,6 +25,7 @@ namespace Kernel
 	class GraphicHandler
 	{
 		friend class ControlerHandler;
+		friend class GraphicHandlerBuilder;
 
 		public:
 
