@@ -32,7 +32,7 @@ namespace gu
 	bool IsComments(const std::string line, char commentSign)
 	{
 		for(unsigned int i = 0; i < line.size(); ++i)
-			if(line[i] != ' ' && line[i] != commentSign)
+			if(line[i] != ' ' && line[i] != '\t' && line[i] != commentSign)
 				return false;
 			else if(line[i] == commentSign)
 				return true;
@@ -75,7 +75,7 @@ namespace gu
 		{
 			if(copy)
 				res.push_back((*it));
-			else if((*it) != ' ')
+			else if((*it) != ' ' && (*it) != '\t')
 			{
 				copy = true;
 				res.push_back((*it));
@@ -93,7 +93,7 @@ namespace gu
 		for(std::string::const_reverse_iterator it = str.rbegin(); it != str.rend(); ++it)
 			if(copy)
 				tmp.push_back((*it));
-			else if((*it) != ' ')
+			else if((*it) != ' ' && (*it) != '\t')
 			{
 				copy = true;
 				tmp.push_back((*it));

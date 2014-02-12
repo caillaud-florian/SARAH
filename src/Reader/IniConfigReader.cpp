@@ -38,7 +38,7 @@ namespace IO
 					}
 					else
 					{
-						msg::Msg_Spe(msg::MSG_FLAG_ENUM::ERROR, "Error : Line ", vNumLine, " : Wrong Syntax in Section Declaration");
+						msg::Msg_Spe(msg::MSG_FLAG_ENUM::ERROR, "Error in IniConfigReader.Read : Line ", vNumLine, " -> Wrong Syntax in Section Declaration");
 						exit(-1);
 					}
 				}
@@ -58,7 +58,7 @@ namespace IO
 					else
 					{
 						//TODO : peut être gérer quand même l'erreur au lieu d'exit
-						msg::Msg_Spe(msg::MSG_FLAG_ENUM::ERROR, "Error : Line ", vNumLine, " : Wrong Syntax in Property Declaration");
+						msg::Msg_Spe(msg::MSG_FLAG_ENUM::ERROR, "Error in IniConfigReader.Read : Line ", vNumLine, " -> Wrong Syntax in Property Declaration");
 						exit(-1);
 					}
 				}

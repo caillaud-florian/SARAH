@@ -19,11 +19,7 @@ GraphicHandler::GraphicHandler(GeneralConfig & p_gConfig):
 	m_mainWindow(),
 	m_generalClock()
 {
-    WindowConfig * vWConf;
-    if((vWConf = (WindowConfig *)p_gConfig.GetConfig("WindowConfig")) != nullptr){
-        m_mainWindow.create(vWConf->videoMode, vWConf->title, 
-                            vWConf->style, vWConf->contextSettings);
-    }
+    Update();
 }
 
 GraphicHandler::~GraphicHandler()
@@ -61,6 +57,14 @@ bool GraphicHandler::Init()
     glFrustum(-ratio, ratio, -1.f, 1.f, 1.f, 500.f);
 
 	return true;
+}
+
+void GraphicHandler::Update()
+{
+    WindowConfig * vWConf;
+    if((vWConf = (WindowConfig *)gConfig.GetConfig("WindowConfig")) != nullptr){
+        m_mainWindow.create(vWConf->videoMode, vWConf->title, vWConf->style, vWConf->contextSettings);
+    }   
 }
 
 }

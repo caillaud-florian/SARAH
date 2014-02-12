@@ -21,6 +21,8 @@
 
 #include <SFML/Window.hpp>
 
+#include "Utilities/Message/Msg.hpp"
+
 /**
  * \namespace 	Nom de domaine principal.
  */
@@ -64,7 +66,7 @@ namespace Kernel
 			 * \fn 		Constructeur par défaut
 			 */
 			WindowConfig():
-				title("default window"),
+				title("Default Window"),
 				videoMode(sf::VideoMode(640, 480)),
 				style(sf::Style::Default),
 				contextSettings()
@@ -103,13 +105,38 @@ namespace Kernel
 			 */
 			void Print() const
 			{
-				std::cout << "------------------------------" << std::endl 
-							<< GetName() << std::endl
-							<< "------------------------------" << std::endl
-							<< "title \t\t-> " << title << std::endl
-							<< "videoMode \t-> " << "à implémenter" << std::endl
-							<< "style \t\t-> " << "à implémenter" << std::endl
-							<< "contextSettings -> " << "à implémenter" << std::endl;
+				bool styleMultiFlag = false;
+				std::string styleStr = "", pipe = " | ", none = "";
+				msg::Msg_Spe(msg::MSG_FLAG_ENUM::GREEN, "------------------------------");
+				msg::Msg_Spe(msg::MSG_FLAG_ENUM::GREEN, GetName());
+				msg::Msg_Spe(msg::MSG_FLAG_ENUM::GREEN, "------------------------------");
+
+				msg::Msg_Spe(msg::MSG_FLAG_ENUM::GREEN, "title \t\t-> ", title);
+				msg::Msg_Spe(msg::MSG_FLAG_ENUM::GREEN, "videoMode \t-> ", videoMode.width, ":", videoMode.height, ":", videoMode.bitsPerPixel);
+
+				if(style == 0)
+					styleStr += "None";
+				if(style & (1 << 0)){
+					styleStr += (styleMultiFlag ? pipe : none) + "Titlebar";
+					styleMultiFlag = true;
+				}
+				if(style & (1 << 1)){
+					styleStr += (styleMultiFlag ? pipe : none) + "Resize";
+					styleMultiFlag = true;
+				}
+				if(style & (1 << 2)){
+					styleStr += (styleMultiFlag ? pipe : none) + "Close";
+					styleMultiFlag = true;
+				}
+				if(style & (1 << 3)){
+					styleStr += (styleMultiFlag ? pipe : none) + "FullScreen";
+					styleMultiFlag = true;
+				}
+
+				msg::Msg_Spe(msg::MSG_FLAG_ENUM::GREEN, "style \t\t-> ", styleStr);
+
+
+				msg::Msg_Spe(msg::MSG_FLAG_ENUM::GREEN, "contextSettings -> ", "à implémenter");
 			}
 
 		public:

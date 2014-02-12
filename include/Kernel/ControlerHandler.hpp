@@ -11,12 +11,15 @@
 #ifndef CONTROLERHANDLER
 #define CONTROLERHANDLER
 
+#include <map>
+
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 
 #include "Kernel/GeneralConfig.hpp"
 #include "Kernel/GraphicHandler.hpp"
 #include "Kernel/ModelHandler.hpp"
+#include "Kernel/GraphicHandlerBuilder.hpp"
 
 /**
  * \namespace 	Nom de domaine principal.
@@ -40,6 +43,17 @@ namespace Kernel
 	{
 		public:
 
+			/**
+			 * \typedef 	Un dictionnaire de noms associés à des valeur est une \a Section
+			 */
+			typedef std::map<std::string, std::string> 	ConfigMap;
+			/**
+			 * \typedef 	Un dictionnaire de noms associés à une section est une \a Config décrite par le fichier INI
+			 */
+			typedef std::map<std::string, ConfigMap>  	GeneralConfigMap;
+
+		public:
+
 			/*
 			 * \fn 		Constructeur par défaut
 			 */
@@ -52,6 +66,8 @@ namespace Kernel
 			 *			et avec lequel on initialise le controleur.
 			 */
 			ControlerHandler(GeneralConfig &);
+
+			ControlerHandler(GeneralConfigMap &);
 
 			/**
 			 * \fn 		Destructeur

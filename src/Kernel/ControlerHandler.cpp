@@ -24,6 +24,16 @@ ControlerHandler::ControlerHandler(GeneralConfig & p_gConfig):
 
 }
 
+ControlerHandler::ControlerHandler(GeneralConfigMap & p_gConfig):
+    gConfig(),
+    m_graphicHandler(),
+    m_modelHandler(),
+    m_generalClock()
+{
+    GraphicHandlerBuilder graphicBuilder;
+    graphicBuilder(p_gConfig, m_graphicHandler);    
+}
+
 ControlerHandler::~ControlerHandler()
 {
 

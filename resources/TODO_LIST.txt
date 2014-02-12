@@ -1,0 +1,7 @@
+TODO LIST:
+
+-Voir pourquoi, après avoir mis en place le builder de handler graphique, la fenêtre ne se lance plus
+
+-Développer la liaison entre Graphic et Model, principalement pour pouvoir proprement afficher un maillage simple
+
+-Développer le framework pour le 2D !!!!!

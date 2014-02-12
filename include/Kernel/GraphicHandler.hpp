@@ -53,6 +53,8 @@ namespace Kernel
 			 */
 			bool Init();
 
+			void Update();
+
 		public:
 
 			/**
