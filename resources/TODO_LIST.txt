@@ -1,7 +1,17 @@
 TODO LIST:
 
--Voir pourquoi, après avoir mis en place le builder de handler graphique, la fenêtre ne se lance plus
+-Repenser le ModelHandler comme étant le controleur de jeu (pas controleur !), gérant tout la partie modèle
+	| Un ModelHandler peu avoir 0 ou n Windows/GraphicHandler
+	| Il sera surement différencié entre 2D et 3D (encore que) pour apporter plus de fonctionnalité
+	| Besoin d'un lien entre Model et Graphic (le ModelHandler doit avoir accès aux Windows/GraphicHandler)
+
+	SUPER ---> http://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur
+				et http://fr.wikipedia.org/wiki/Observateur_(patron_de_conception) OBSERVEUR/OBSERVABLE !!!
 
 -Développer la liaison entre Graphic et Model, principalement pour pouvoir proprement afficher un maillage simple
 
 -Développer le framework pour le 2D !!!!!
+
+-Gestion des erreurs et exceptions !!!!
+
+-Documentation de la première release !!!!

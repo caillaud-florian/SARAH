@@ -28,7 +28,7 @@ namespace Kernel
 	 */
 	class GraphicHandlerBuilder
 	{
-		friend class ControlerHandler;
+		template<class S, class T> friend class ControlerHandler;
 
 		public:
 

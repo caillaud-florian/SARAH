@@ -17,14 +17,13 @@ namespace Sarah
 namespace Kernel
 {
 
-	class ControlerHandler;
-
 	/**
 	 * \class 	Classe GraphicHandler permettant de gérer les modules liée à l'interface de la plateforme.
 	 */
 	class GraphicHandler
 	{
-		friend class ControlerHandler;
+		friend class EventBinder;
+		template<class S, class T> friend class ControlerHandler;
 		friend class GraphicHandlerBuilder;
 
 		public:
@@ -69,7 +68,7 @@ namespace Kernel
 			/**
 			 * \brief 	Fenêtre principale (de type SFML Window).
 			 */
-			sf::Window m_mainWindow;
+			sf::Window m_focusedWindow;
 			/**
 			 * \brief 	Horloge permettant un contexte temporel principal (de type SFML Clock).
 			 */

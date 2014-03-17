@@ -5,6 +5,7 @@
 #include <SFML/OpenGL.hpp>
 
 #include "Kernel/GeneralConfig.hpp"
+#include "Kernel/Observable.hpp"
 
 /**
  * \namespace 	Nom de domaine principal.
@@ -16,15 +17,13 @@ namespace Sarah
  */	
 namespace Kernel
 {
-	
-	class ControlerHandler;
 
 	/**
 	 * \class 	Classe ModelHandler permettant de gérer tous les modules de la plateforme.
 	 */
 	class ModelHandler
 	{
-		friend class ControlerHandler;
+		template<class S, class T> friend class ControlerHandler;
 
 		public:
 
@@ -50,9 +49,9 @@ namespace Kernel
 			 * \fn 		Initialisation de la partie modèle de la plateforme SARAH
 			 * \return 	true si l'initialisation s'est bien passée, false sinon.
 			 */
-			bool Init();
+			virtual bool Init();
 
-			bool Load(GLfloat *);
+			virtual bool Load(GLfloat *);
 
 		public:
 
@@ -63,7 +62,7 @@ namespace Kernel
 			 */
 			GeneralConfig gConfig;
 
-		private:
+		protected:
 
 			/**
 			 * \brief 	Pointeur vers le maillage chargé dans la plateforme.

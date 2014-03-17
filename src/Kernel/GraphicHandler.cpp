@@ -8,15 +8,15 @@ namespace Kernel
 // Constructeur et destructeur
 GraphicHandler::GraphicHandler():
     gConfig(),
-	m_mainWindow(),
+	m_focusedWindow(),
 	m_generalClock()
 {
-    
+    m_focusedWindow.setVisible(false);
 }
 
 GraphicHandler::GraphicHandler(GeneralConfig & p_gConfig):
     gConfig(p_gConfig),
-	m_mainWindow(),
+	m_focusedWindow(),
 	m_generalClock()
 {
     Update();
@@ -31,7 +31,8 @@ GraphicHandler::~GraphicHandler()
 bool GraphicHandler::Init()
 {
     // Make it the active window for OpenGL calls
-    m_mainWindow.setActive();
+    Update(); //pour avoir la fenêtre à jour en fonction de la config avant le glMatrixMode (??)
+    m_focusedWindow.setActive();
 
     //------------------------OPENGL--------------------------------------
 
@@ -48,12 +49,12 @@ bool GraphicHandler::Init()
     glDisable(GL_TEXTURE_2D);
 
     // Configure the viewport (the same size as the window)
-    glViewport(0, 0, m_mainWindow.getSize().x, m_mainWindow.getSize().y);
+    glViewport(0, 0, m_focusedWindow.getSize().x, m_focusedWindow.getSize().y);
 
     // Setup a perspective projection
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    GLfloat ratio = static_cast<float>(m_mainWindow.getSize().x) / m_mainWindow.getSize().y;
+    GLfloat ratio = static_cast<float>(m_focusedWindow.getSize().x) / m_focusedWindow.getSize().y;
     glFrustum(-ratio, ratio, -1.f, 1.f, 1.f, 500.f);
 
 	return true;
@@ -63,7 +64,7 @@ void GraphicHandler::Update()
 {
     WindowConfig * vWConf;
     if((vWConf = (WindowConfig *)gConfig.GetConfig("WindowConfig")) != nullptr){
-        m_mainWindow.create(vWConf->videoMode, vWConf->title, vWConf->style, vWConf->contextSettings);
+        m_focusedWindow.create(vWConf->videoMode, vWConf->title, vWConf->style, vWConf->contextSettings);
     }   
 }
 

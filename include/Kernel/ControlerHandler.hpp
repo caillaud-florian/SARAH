@@ -20,6 +20,7 @@
 #include "Kernel/GraphicHandler.hpp"
 #include "Kernel/ModelHandler.hpp"
 #include "Kernel/GraphicHandlerBuilder.hpp"
+#include "Kernel/EventBinder.hpp"
 
 /**
  * \namespace 	Nom de domaine principal.
@@ -39,6 +40,7 @@ namespace Kernel
 	/**
 	 * \class 	Classe ControlerHandler permettant de gérer tous les modules de la plateforme.
 	 */
+	template <typename _ModelHandlerType, typename _EventBinderType>
 	class ControlerHandler
 	{
 		public:
@@ -57,7 +59,15 @@ namespace Kernel
 			/*
 			 * \fn 		Constructeur par défaut
 			 */
-			ControlerHandler();
+			ControlerHandler():
+			    gConfig(),
+				m_graphicHandler(),
+			    m_modelHandler(),
+			    m_eventBinder(m_graphicHandler, m_modelHandler),
+				m_generalClock()
+			{
+
+			}
 
 			/*
 			 * \fn 		Constructeur paramétré
@@ -65,30 +75,83 @@ namespace Kernel
 			 * \param 	p_generalConfig 	Objet représentant une configuration générale 
 			 *			et avec lequel on initialise le controleur.
 			 */
-			ControlerHandler(GeneralConfig &);
+			ControlerHandler(GeneralConfig & p_gConfig):
+			    gConfig(p_gConfig),
+				m_graphicHandler(p_gConfig),
+			    m_modelHandler(p_gConfig),
+			    m_eventBinder(m_graphicHandler, m_modelHandler),
+				m_generalClock()
+			{
 
-			ControlerHandler(GeneralConfigMap &);
+			}
+
+			ControlerHandler(GeneralConfigMap & p_gConfig):
+			    gConfig(),
+			    m_graphicHandler(),
+			    m_modelHandler(),
+			    m_eventBinder(m_graphicHandler, m_modelHandler),
+			    m_generalClock()
+			{
+			    GraphicHandlerBuilder graphicBuilder;
+			    graphicBuilder(p_gConfig, m_graphicHandler);    
+			}
 
 			/**
 			 * \fn 		Destructeur
 			 */
-			~ControlerHandler();
+			~ControlerHandler(){}
 
 			/**
 			 * \fn 		Initialisation de la plateforme SARAH
 			 * \return 	true si l'initialisation s'est bien passée, false sinon.
 			 */
-			bool Init();
+			bool Init()
+			{
+			    return (m_graphicHandler.Init() && m_modelHandler.Init());
+			}
 
 			/**
 			 * \fn 		Boucle principale d'évènements
 			 * \return 	true si la boucle a été quittée correctement, false sinon.
 			 */
-			bool MainLoop();
+			bool MainLoop()
+			{
+			    // TODO : plutot tant qu'il y a une fenêtre d'ouverte !
+			    while (GetFocusedWindow().isOpen())
+			    {
+			        // gère les évènements
+			        m_eventBinder.Bind();
+
+			        if(!m_eventBinder.IsPaused())
+			        {
+			            // Clear the color and depth buffers
+			            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			            // Apply some transformations to rotate the cube
+			            glMatrixMode(GL_MODELVIEW);
+			            glLoadIdentity();
+			            glTranslatef(0.f, 0.f, -200.f);
+			            glRotatef(m_generalClock.getElapsedTime().asSeconds() * 50, 1.f, 0.f, 0.f);
+			            glRotatef(m_generalClock.getElapsedTime().asSeconds() * 30, 0.f, 1.f, 0.f);
+			            glRotatef(m_generalClock.getElapsedTime().asSeconds() * 90, 0.f, 0.f, 1.f);
+
+			            // Draw the cube
+			            glDrawArrays(GL_TRIANGLES, 0, 36);
+
+			            // Finally, display the rendered frame on screen
+			            GetFocusedWindow().display();
+			        }
+			    }
+
+				return true;
+			}
 
 		protected:
 
-			sf::Window & GetWindow();
+			sf::Window & GetFocusedWindow()
+			{
+			    return m_graphicHandler.m_focusedWindow;
+			}
 
 		public:
 
@@ -103,7 +166,10 @@ namespace Kernel
 
 			GraphicHandler m_graphicHandler;
 
-			ModelHandler m_modelHandler;
+			_ModelHandlerType m_modelHandler;
+
+			_EventBinderType m_eventBinder;
+
 			/**
 			 * \brief 	Horloge permettant un contexte temporel principal (de type SFML Clock).
 			 */
