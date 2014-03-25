@@ -1,4 +1,4 @@
-#include "Window/Window.hpp"
+#include "Window.hpp"
 
 namespace Sarah
 {

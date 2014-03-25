@@ -1,0 +1,21 @@
+newmtl default
+Kd  0.7500  0.7500  0.7500
+Ns 0
+
+newmtl floor
+Kd  0.8 0.8 0.8
+Ks  0.2  0.2  0.2
+Ns 20
+map_Kd floor.png
+
+newmtl wall
+Kd  0.8 0.8 0.8
+Ks  0.2  0.2  0.2
+Ns 20
+map_Kd wall.png
+
+newmtl ceiling
+Kd  0.8 0.8 0.8
+Ks  0.2  0.2  0.2
+Ns 20
+map_Kd ceiling.png

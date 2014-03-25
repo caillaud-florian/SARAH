@@ -1,4 +1,4 @@
-#include "MyApplication/MyEventBinder.hpp"
+#include "MyEventBinder.hpp"
 
 namespace Sarah
 {

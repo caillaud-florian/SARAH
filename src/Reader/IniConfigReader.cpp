@@ -1,4 +1,4 @@
-#include "Reader/IniConfigReader.hpp"
+#include "IniConfigReader.hpp"
 
 namespace Sarah
 {

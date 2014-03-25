@@ -1,4 +1,4 @@
-#include "Utilities/OptGetter/Parameter.hpp"
+#include "Parameter.hpp"
 
 namespace optg
 {

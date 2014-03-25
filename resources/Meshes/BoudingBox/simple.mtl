@@ -1,0 +1,8 @@
+newmtl default
+Kd  0.7500  0.7500  0.7500
+Ns 0
+
+newmtl diffusetexture
+Kd  1.0000  1.0000  1.0000
+map_Kd red.png
+Ns 0

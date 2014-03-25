@@ -1,4 +1,4 @@
-#include "Utilities/OptGetter/CommentedParameter.hpp"
+#include "CommentedParameter.hpp"
 
 namespace optg
 {

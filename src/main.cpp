@@ -5,6 +5,7 @@
 
 #include "MyApplication/MyEventBinder.hpp"
 #include "MyApplication/MyModelHandler.hpp"
+#include "MyApplication/MyGraphicHandler.hpp"
 
 typedef Sarah::IO::IniConfigReader                          IniConfigReader; 
 typedef Sarah::Kernel::WindowConfig                         WindowConfig;
@@ -12,13 +13,15 @@ typedef Sarah::Kernel::GeneralConfig                        GeneralConfig;
 typedef Sarah::Kernel::EventBinder                          EventBinder;
 typedef Sarah::MyEventBinder                                MyEventBinder;
 typedef Sarah::MyModelHandler                               MyModelHandler;
-typedef Sarah::Kernel::ControlerHandler<MyModelHandler, MyEventBinder>      ControlerHandler;
+typedef Sarah::MyGraphicHandler                             MyGraphicHandler;
+
+typedef Sarah::Kernel::ControlerHandler<MyModelHandler, MyGraphicHandler, MyEventBinder>      ControlerHandler;
 
 int main()
 {
     ///////////////// Initialisation /////////////////////
 
-    IniConfigReader iniReader("../resources/WindowConfig.ini");
+    IniConfigReader iniReader("../resources/Configuration/WindowConfig.ini");
     
     iniReader.Read();
 

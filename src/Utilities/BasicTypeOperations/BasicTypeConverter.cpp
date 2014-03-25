@@ -1,4 +1,4 @@
-#include "Utilities/BasicTypeOperations/BasicTypeConverter.hpp"
+#include "BasicTypeConverter.hpp"
 
 namespace gu
 {

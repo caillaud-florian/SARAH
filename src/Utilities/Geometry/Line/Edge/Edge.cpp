@@ -1,4 +1,4 @@
-#include "Utilities/Geometry/Line/Edge/Edge.hpp"
+#include "Edge.hpp"
 
 namespace geo
 {

@@ -1,4 +1,4 @@
-#include "Utilities/Geometry/Point/Vector.hpp"
+#include "Vector.hpp"
 
 namespace geo
 {

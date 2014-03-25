@@ -1,17 +1,69 @@
 TODO LIST:
 
--Repenser le ModelHandler comme étant le controleur de jeu (pas controleur !), gérant tout la partie modèle
-	| Un ModelHandler peu avoir 0 ou n Windows/GraphicHandler
-	| Il sera surement différencié entre 2D et 3D (encore que) pour apporter plus de fonctionnalité
-	| Besoin d'un lien entre Model et Graphic (le ModelHandler doit avoir accès aux Windows/GraphicHandler)
+-Mettre en place la deuxième partie du cmake (ie : une librairie pour chaque dossier principal, spécialement pour Utilities qui doit être dynamique)
 
-	SUPER ---> http://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur
-				et http://fr.wikipedia.org/wiki/Observateur_(patron_de_conception) OBSERVEUR/OBSERVABLE !!!
+-Mettre en place des tests avec cmake pour pouvoir tester sereinement
 
--Développer la liaison entre Graphic et Model, principalement pour pouvoir proprement afficher un maillage simple
+-Commenter tous les fichiers d'entête et voir pour générer la documentation avec cmake
 
--Développer le framework pour le 2D !!!!!
+-Réaliser la première release (version 1.0) !!!
 
--Gestion des erreurs et exceptions !!!!
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
--Documentation de la première release !!!!
+		-Peaufiner les modèle MVC pour qu'il soit MAXY clean
+
+		-Faire un framework ultra simple mais béton ! corriger les erreurs ET les fuites de mémoire (s'il en a)
+
+		-Gestion des erreurs et exceptions !!!!
+
+		-Mettre à jour entièrement la documentation !!
+
+		-Réaliser la deuxième release (version 1.1)
+
+		-------------------------------------------------------------------------------------------------------------------------------------------
+
+				-Développer le framework pour la 3D !!!!!
+					-mettre en place les shaders et une vraie gestion du pipeline openGL
+					-permettre d'afficher UN seul maillage (reader OBJ) -> test de charge avec de GROS maillages pour être sûr d'être efficace !
+					-ne pas oublier de faire tout ça simple et abordable !!
+					-pouvoir choisir son .obj dans les fichiers de config (poour l'instant)
+
+				-Mettre à jour entièrement la documentation, verifier erreurs/exceptions, warning, fuites mémoire !!!
+
+				-Réaliser la troisième release (version 1.2)
+
+				-----------------------------------------------------------------------------------------------------------------------------------
+
+						-Développer le framework pour la 2D
+							-gestion des vues (travaille en lien avec la 3D)
+							-gestion des dessins simples
+							-gestion des sprite, textures, etc.
+							-pouvoir facilement créer un tableau, un personnage, charger les tuiles et pouvoir bouger dans la fenêtre.
+
+						-Mettre à jour entièrement la documentation, verifier erreurs/exceptions, warning, fuites mémoire !!!
+
+						-Réaliser la quatrième release (version 1.3)
+
+						---------------------------------------------------------------------------------------------------------------------------
+
+								-Réaliser un framework tant 2D que 3D simple et très efficace permettant de faire facilement et rapidement un jeu 2D 
+								 ou un utilitaire 3D (utilisation possible d'outils sur LE maillage)
+
+								-aucune erreur, warning (même sous clang), fuite mémoire. test sur les 3 OS (et mise en place des restrictions réelle de version -> pour cmake par exemple)
+
+								-documentation nickel !
+
+								-code propre et utilisation d'un profileur pour accélération de performance
+
+								-dernière release de la verion 1 (version 1.4)
+
+								-------------------------------------------------------------------------------------------------------------------
+
+										-Idées futures :
+											# accélération GPU pour certains traitements ?
+											# gestion de plusieurs maillages (sous forme de scene ou pas), plusieurs textures, etc. -> 3D polyvalente
+											# utilisation de QT pour avoir des vrai menu ET/OU mise en place d'un terminal intégré (surtout utile pour les sorties d'erreur)
+												.
+												.
+												.
+												.

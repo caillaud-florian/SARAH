@@ -1,4 +1,4 @@
-#include "Kernel/EventBinder.hpp"
+#include "EventBinder.hpp"
 
 namespace Sarah
 {

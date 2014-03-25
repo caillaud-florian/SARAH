@@ -1,4 +1,4 @@
-#include "Utilities/BasicTypeOperations/StringOperation.hpp"
+#include "StringOperation.hpp"
 
 namespace gu
 {

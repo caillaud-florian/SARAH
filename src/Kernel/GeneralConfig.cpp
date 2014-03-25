@@ -1,4 +1,4 @@
-#include "Kernel/GeneralConfig.hpp"
+#include "GeneralConfig.hpp"
 
 namespace Sarah
 {

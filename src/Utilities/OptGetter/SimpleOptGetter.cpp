@@ -1,4 +1,4 @@
-#include "Utilities/OptGetter/SimpleOptGetter.hpp"
+#include "SimpleOptGetter.hpp"
 
 namespace optg
 {
