@@ -4,8 +4,9 @@
  * \version 	0.1
  * \date     	28 Octobre 2013
  * \brief     	Fichier implémentant le controleur de la plateforme SARAH.
- * \detail		Cet objet représente la partie CONTROLLEUR au sein de la plateforme lors de l'execution
+ * \detail		Cet objet représente la partie Controleur au sein de la plateforme lors de l'execution
  *				sert à gérer les différents modules de la plateforme.
+ * \todo 		Controleur en anglais s'écrit controller et non pas controler 8.( -> penser à changer les noms.
  */
 
 #ifndef CONTROLERHANDLER
@@ -19,36 +20,47 @@
 #include "GeneralConfig.hpp"
 #include "GraphicHandler.hpp"
 #include "ModelHandler.hpp"
+
 #include "GraphicHandlerBuilder.hpp"
 #include "EventBinder.hpp"
 
 /**
- * \namespace 	Nom de domaine principal.
- */	
+ * \namespace 	Sarah 	
+ * \brief 		Nom de domaine principal.
+ */
 namespace Sarah
 {
+
 /**
- * \namespace 	Nom de domaine secondaire, partie coeur.
- */	
+ * \namespace 	Kernel	
+ * \brief 		Nom de domaine secondaire, partie coeur.
+ */
 namespace Kernel
 {
+	
 	/**
-	 * \typedef	\a Kernel::GeneralConfig devient \a GeneralConfig pour plus de simplicité pour l'utilisateur.
+	 * \typedef		Sarah::Kernel::GeneralConfig devient Sarah::GeneralConfig pour plus de simplicité pour l'utilisateur.
 	 */
 	typedef Kernel::GeneralConfig GeneralConfig;
 
 	/**
-	 * \class 	Classe ControlerHandler permettant de gérer tous les modules de la plateforme.
+	 * \class 	ControlerHandler
+	 * \brief	Classe ControlerHandler permettant de gérer tous les modules de la plateforme.
+	 * 			Classe template par le type de ModelHandler, de GraphicHandler et de EventBinder
+	 * 			Afin de permettre une personnalisation de la base MVC et de la gestion d'évènement.
+	 * \see 	GraphicHandler ModelHandler
 	 */
 	template <typename _ModelHandlerType, typename _GraphicHandlerType, typename _EventBinderType>
 	class ControlerHandler
 	{
+
 		public:
 
 			/**
 			 * \typedef 	Un dictionnaire de noms associés à des valeur est une \a Section
 			 */
 			typedef std::map<std::string, std::string> 	ConfigMap;
+
 			/**
 			 * \typedef 	Un dictionnaire de noms associés à une section est une \a Config décrite par le fichier INI
 			 */
@@ -57,7 +69,8 @@ namespace Kernel
 		public:
 
 			/*
-			 * \fn 		Constructeur par défaut
+			 * \fn 		Constructeur par défaut.
+			 * \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
 			 */
 			ControlerHandler():
 			    gConfig(),
@@ -70,10 +83,11 @@ namespace Kernel
 			}
 
 			/*
-			 * \fn 		Constructeur paramétré
+			 * \fn 		Constructeur paramétré.
+			 * \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
 			 * \detail 	Construction à partir d'une configuration générale.
 			 * \param 	p_generalConfig 	Objet représentant une configuration générale 
-			 *			et avec lequel on initialise le controleur.
+			 *								et avec lequel on initialise le controleur.
 			 */
 			ControlerHandler(GeneralConfig & p_gConfig):
 			    gConfig(p_gConfig),
@@ -85,6 +99,14 @@ namespace Kernel
 
 			}
 
+			/*
+			 * \fn 		Constructeur paramétré.
+			 * \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
+			 * \detail 	Construction à partir d'une configuration générale sous forme de dictionnaire.
+			 * 			Généralement issue d'une lecture de fichier .INI par IniConfigReader.
+			 * \param 	p_generalConfig 	Objet représentant une configuration générale 
+			 *								et avec lequel on initialise le controleur.
+			 */
 			ControlerHandler(GeneralConfigMap & p_gConfig):
 			    gConfig(),
 			    m_graphicHandler(),
@@ -97,12 +119,13 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Destructeur
+			 * \fn 		Destructeur.
 			 */
 			~ControlerHandler(){}
 
 			/**
-			 * \fn 		Initialisation de la plateforme SARAH
+			 * \fn 		Initialisation de la plateforme SARAH.
+			 * \detail	Mise en place du modèle MVC avec GrapicHandler et ModelHandler.
 			 * \return 	true si l'initialisation s'est bien passée, false sinon.
 			 */
 			bool Init()
@@ -113,7 +136,7 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Boucle principale d'évènements
+			 * \fn 		Boucle principale d'évènements.
 			 * \return 	true si la boucle a été quittée correctement, false sinon.
 			 */
 			bool MainLoop()
@@ -154,6 +177,11 @@ namespace Kernel
 
 		protected:
 
+			/**
+			 * \fn 		Récupération de la fenêtre sélectionnée du GraphicHandler.
+			 * \return	La fenêtre sélectionnée du GraphicHandler (de type SFML::Window).
+			 * \todo 	Cette fonction devrait être dans GraphicHandler ce qui éviterait une relation d'ami. 
+			 */
 			sf::Window & GetFocusedWindow()
 			{
 			    return m_graphicHandler.m_focusedWindow;
@@ -162,7 +190,7 @@ namespace Kernel
 		public:
 
 			/**
-			 * \brief 	Configuration générale de la plateforme
+			 * \brief 	Configuration générale de la plateforme.
 			 * \detail 	Mise à disposition de l'utilisateur (public) pour consultation 
 			 * 			ou changement (alors ne pas oublier de faire un GeneralConfigUpdate).
 			 */
@@ -170,10 +198,19 @@ namespace Kernel
 
 		private:
 
+			/**
+			 * \brief 	Gestionnaire de la Vue (type template).
+			 */
 			_GraphicHandlerType m_graphicHandler;
 
+			/**
+			 * \brief 	Gestionnaire du Modèle (type template).
+			 */
 			_ModelHandlerType m_modelHandler;
 
+			/**
+			 * \brief 	Gestionnaire d'évènement (type template).
+			 */
 			_EventBinderType m_eventBinder;
 
 			/**

@@ -1,3 +1,14 @@
+/**
+ * \file		GraphicHandlerBuilder.hpp
+ * \author		fcaillaud
+ * \version 	1.0
+ * \date     	28 Mars 2014
+ * \brief     	Fichier décrivant la classe GraphicHandlerBuilder.
+ * \detail 		Classe utilisée pour la construction d'un object GraphicHandler
+ *				à partir d'un ensemble de propriétés (typedef GeneralConfigMap)
+ * 				selon le design pattern Builder.
+ */
+
 #ifndef GRAPHICHANDLERBUILDER
 #define GRAPHICHANDLERBUILDER
 
@@ -11,20 +22,25 @@
 #include "GraphicHandler.hpp"
 #include "GeneralConfig.hpp"
 
-#define configName "WindowConfig"
+#define graphicHandlerBuilderConfigName "WindowConfig"
 
 /**
- * \namespace 	Nom de domaine principal.
- */	
+ * \namespace 	Sarah 	
+ * \brief 		Nom de domaine principal.
+ */
 namespace Sarah
 {
+
 /**
- * \namespace 	Nom de domaine secondaire, partie coeur.
- */	
+ * \namespace 	Kernel	
+ * \brief 		Nom de domaine secondaire, partie coeur.
+ */
 namespace Kernel
 {
+
 	/**
-	 * \class 	Classe GraphicHandlerBuilder permettant de construire une instance de GraphicHandler à partir d'une configuration générale.
+	 * \class 	GraphicHandlerBuilder
+	 * \brief 	Classe GraphicHandlerBuilder permettant de construire une instance de GraphicHandler à partir d'un ensemble de propriétés.
 	 */
 	class GraphicHandlerBuilder
 	{
@@ -33,17 +49,23 @@ namespace Kernel
 		public:
 
 			/**
-			 * \typedef 	Un dictionnaire de noms associés à des valeur est une \a Section
+			 * \typedef 	Un dictionnaire de noms associés à des valeur est une ConfigMap.
 			 */
 			typedef std::map<std::string, std::string> 	ConfigMap;
 			/**
-			 * \typedef 	Un dictionnaire de noms associés à une section est une \a Config décrite par le fichier INI
+			 * \typedef 	Un dictionnaire de noms associés à une ConfigMap est une GeneralConfigMap.
 			 */
 			typedef std::map<std::string, ConfigMap>  	GeneralConfigMap;
 
 		public:
 
-			//TODO : permettre de REbuilder sans avoir a relire la config (conservation de la derniere config)
+			/**
+			 * \fn 		Opération de construction d'un GraphicHandler à l'aide d'un ensemble de propriétés.
+			 * \param 	generalConfigMap 	Ensemble d'informations regroupé sous forme de dictionnaire de propriétés
+			 *								(typedef GeneralConfigMap).
+			 * \param 	graphHandler 		L'instance de GraphicHandler à construire.
+			 * \todo 	Permettre de REbuilder sans avoir a relire la config (conservation de la derniere config).
+			 */
 			virtual void operator()(const GeneralConfigMap & generalConfigMap, GraphicHandler & graphHandler)
 			{
 				GeneralConfig generalConfig;
@@ -57,7 +79,7 @@ namespace Kernel
 
 				//si il n'y a pas de section WindowConfig -> config par défaut
 				//sinon, les propriétés spécifiées sont gérées, les autres sont mises par défaut
-				if((itGConfig = generalConfigMap.find(configName)) != generalConfigMap.end())
+				if((itGConfig = generalConfigMap.find(graphicHandlerBuilderConfigName)) != generalConfigMap.end())
 				{
 					ConfigMap windowConfigMap = itGConfig->second;
 
@@ -132,11 +154,9 @@ namespace Kernel
 									exit(-1);
 								}
 							}
-
 							windowConfig->style = persoStyle;
 						}
 					}
-
 				}
 				windowConfig->Print();
 				graphHandler.gConfig = generalConfig;

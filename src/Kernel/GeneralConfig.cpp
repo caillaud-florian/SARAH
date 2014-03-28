@@ -28,10 +28,10 @@ namespace Kernel
 
 	}
 
-	BaseConfig * GeneralConfig::GetConfig(std::string p_str)
+	BaseConfig * GeneralConfig::GetConfig(std::string p_configName)
 	{	
 		std::map<std::string, BaseConfig *>::iterator it;
-		if( (it = m_configMap.find(p_str)) != m_configMap.end() )
+		if( (it = m_configMap.find(p_configName)) != m_configMap.end() )
 			return it->second;
 		return nullptr;
 	}

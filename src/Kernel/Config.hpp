@@ -6,11 +6,10 @@
  * \brief     	Fichier implémentant un modèle BaseConfig et ses dérivés.
  * \detail 		Une configuration permet de regrouper plusieurs données communes à un objet.
  *				Ces attributs sont public afin de permettre à l'utilisateur de les consulter
- *				et de les changer simplement (un ConfigUpdate est nécessaire).
- * \todo		Créer une classe mère Configured, ayant une fonction purement virtuelle
+ *				et de les changer simplement (un ConfigUpdate sera sûrement nécessaire).
+ * \todo		Créer une classe mère Configurable, ayant une fonction purement virtuelle
  *				ConfigUpdate mettant à jour l'objet héritant en fonction des changements faits 
  *				sur la configuration.
- *				Utiliser l'utilitaire MSG pour les messages.
  */
 
 #ifndef CONFIG
@@ -24,17 +23,22 @@
 #include "Utilities/Message/Msg.hpp"
 
 /**
- * \namespace 	Nom de domaine principal.
+ * \namespace 	Sarah 	
+ * \brief 		Nom de domaine principal.
  */
 namespace Sarah
 {
+
 /**
- * \namespace 	Nom de domaine secondaire, partie coeur.
+ * \namespace 	Kernel	
+ * \brief 		Nom de domaine secondaire, partie coeur.
  */
 namespace Kernel
 {
+
 	/**
-	 * \class 	Classe mère de toutes les configurations
+	 * \class 	BaseConfig
+	 * \brief 	Classe mère de toutes les configurations
 	 */
 	class BaseConfig
 	{
@@ -42,20 +46,22 @@ namespace Kernel
 		public:
 
 			/**
-			 * \fn 		Fonction purement virtuelle renvoyant le nom de la configuration.
+			 * \fn 		Récupération du nom de la configuration (purement virtuelle).
 			 * \return 	Le nom de la configuration.
 			 */
 			virtual std::string GetName() const = 0;
 			/**
-			 * \fn 		Fonction purement virtuelle imprimant sur la sortie standard 
-			 *			les données de la configuration.
+			 * \fn 		Impression des données de la configuration sur la sortie standard (purement virtuelle).
 			 */
 			virtual void Print() const = 0;
 
 	};
 
 	/**
-	 * \class Class dérivée de BaseConfig et représentant la configuration d'une Sarah::Window::Window
+	 * \class 	WindowConfig
+	 * \brief 	Classe dérivée de BaseConfig et représentant la configuration d'une Sarah::Window::Window
+	 * \see 	BaseConfig
+	 * \todo 	Besoin d'une réflexion sur la nature conceptuelle de cette classe.
 	 */
 	class WindowConfig : public BaseConfig
 	{
@@ -63,7 +69,7 @@ namespace Kernel
 		public:
 
 			/**
-			 * \fn 		Constructeur par défaut
+			 * \fn 		Constructeur par défaut.
 			 */
 			WindowConfig():
 				title("Default Window"),
@@ -75,11 +81,11 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Constructeur paramétré
-			 * \param 	p_title 	Titre de la fenêtre
-			 * \param 	p_videoMode	Mode vidéo utilisé (taille, etc.)
-			 * \param 	p_style 	Style de la fenêtre (FullScreen, etc.)
-			 * \param 	p_context 	ContextSettings de la fenêtre
+			 * \fn 		Constructeur paramétré.
+			 * \param 	p_title 	Titre de la fenêtre.
+			 * \param 	p_videoMode	Mode vidéo utilisé (taille, etc.).
+			 * \param 	p_style 	Style de la fenêtre (FullScreen, etc.).
+			 * \param 	p_context 	ContextSettings de la fenêtre.
 			 */
 			WindowConfig(std::string p_title, sf::VideoMode p_videoMode, int p_style, sf::ContextSettings p_context):
 				title(p_title),
@@ -132,9 +138,7 @@ namespace Kernel
 					styleStr += (styleMultiFlag ? pipe : none) + "FullScreen";
 					styleMultiFlag = true;
 				}
-
 				msg::Msg_Spe(msg::MSG_FLAG_ENUM::GREEN, "style \t\t-> ", styleStr);
-
 
 				msg::Msg_Spe(msg::MSG_FLAG_ENUM::GREEN, "contextSettings -> ", "à implémenter");
 			}
@@ -145,19 +149,21 @@ namespace Kernel
 			 * \brief 	Le titre de la fenêtre
 			 */
 			std::string 			title;
+
 			/**
 			 * \brief 	La taille de la fenêtre et le format des pixels (de type SFML VideoMode)
 			 */
 			sf::VideoMode 			videoMode;
+
 			/**
 			 * \brief 	Le style de la fenêtre (FullScreen, TitleBar, None, etc.)(enum SFML)
 			 */
 			int 					style;
+
 			/**
 			 * \brief 	Les informations de contexte de la fenêtre (de type SFML ContextSettings)
 			 */
 			sf::ContextSettings 	contextSettings;
-
 
 	};
 
