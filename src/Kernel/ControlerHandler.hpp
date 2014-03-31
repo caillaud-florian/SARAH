@@ -4,7 +4,7 @@
  * \version 	0.1
  * \date     	28 Octobre 2013
  * \brief     	Fichier implémentant le controleur de la plateforme SARAH.
- * \detail		Cet objet représente la partie Controleur au sein de la plateforme lors de l'execution
+ * \details		Cet objet représente la partie Controleur au sein de la plateforme lors de l'execution
  *				sert à gérer les différents modules de la plateforme.
  * \todo 		Controleur en anglais s'écrit controller et non pas controler 8.( -> penser à changer les noms.
  */
@@ -39,39 +39,39 @@ namespace Kernel
 {
 	
 	/**
-	 * \typedef		Sarah::Kernel::GeneralConfig devient Sarah::GeneralConfig pour plus de simplicité pour l'utilisateur.
+	 * Sarah::Kernel::GeneralConfig devient Sarah::GeneralConfig pour plus de simplicité pour l'utilisateur.
 	 */
 	typedef Kernel::GeneralConfig GeneralConfig;
 
 	/**
 	 * \class 	ControlerHandler
 	 * \brief	Classe ControlerHandler permettant de gérer tous les modules de la plateforme.
-	 * 			Classe template par le type de ModelHandler, de GraphicHandler et de EventBinder
-	 * 			Afin de permettre une personnalisation de la base MVC et de la gestion d'évènement.
+	 * \details	Classe template par le type de ModelHandler, de GraphicHandler et de EventBinder
+	 * 			afin de permettre une personnalisation de la base MVC et de la gestion d'évènement.
 	 * \see 	GraphicHandler ModelHandler
 	 */
-	template <typename _ModelHandlerType, typename _GraphicHandlerType, typename _EventBinderType>
+	template <typename _MHType, typename _GHType, typename _EBType>
 	class ControlerHandler
 	{
 
 		public:
 
 			/**
-			 * \typedef 	Un dictionnaire de noms associés à des valeur est une \a Section
+			 * Un dictionnaire de noms associés à des valeur est une \a Section
 			 */
 			typedef std::map<std::string, std::string> 	ConfigMap;
 
 			/**
-			 * \typedef 	Un dictionnaire de noms associés à une section est une \a Config décrite par le fichier INI
+			 * Un dictionnaire de noms associés à une section est une \a Config décrite par le fichier INI
 			 */
 			typedef std::map<std::string, ConfigMap>  	GeneralConfigMap;
 
 		public:
 
-			/*
-			 * \fn 		Constructeur par défaut.
-			 * \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
-			 */
+			///
+			/// Constructeur par défaut.
+			/// \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
+			///
 			ControlerHandler():
 			    gConfig(),
 				m_graphicHandler(),
@@ -82,13 +82,13 @@ namespace Kernel
 
 			}
 
-			/*
-			 * \fn 		Constructeur paramétré.
-			 * \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
-			 * \detail 	Construction à partir d'une configuration générale.
-			 * \param 	p_generalConfig 	Objet représentant une configuration générale 
-			 *								et avec lequel on initialise le controleur.
-			 */
+			///
+			/// Constructeur paramétré.
+			/// \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
+			/// \details	Construction à partir d'une configuration générale.
+			/// \param 	p_gConfig 	Objet représentant une configuration générale 
+			///						et avec lequel on initialise le controleur.
+			///
 			ControlerHandler(GeneralConfig & p_gConfig):
 			    gConfig(p_gConfig),
 				m_graphicHandler(p_gConfig),
@@ -99,14 +99,14 @@ namespace Kernel
 
 			}
 
-			/*
-			 * \fn 		Constructeur paramétré.
-			 * \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
-			 * \detail 	Construction à partir d'une configuration générale sous forme de dictionnaire.
-			 * 			Généralement issue d'une lecture de fichier .INI par IniConfigReader.
-			 * \param 	p_generalConfig 	Objet représentant une configuration générale 
-			 *								et avec lequel on initialise le controleur.
-			 */
+			///
+			/// Constructeur paramétré.
+			/// \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
+			/// \details	Construction à partir d'une configuration générale sous forme de dictionnaire.
+			/// 			Généralement issue d'une lecture de fichier .INI par IniConfigReader.
+			/// \param 	p_gConfig 	Objet représentant une configuration générale 
+			///						et avec lequel on initialise le controleur.
+			///
 			ControlerHandler(GeneralConfigMap & p_gConfig):
 			    gConfig(),
 			    m_graphicHandler(),
@@ -119,13 +119,13 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Destructeur.
+			 * Destructeur.
 			 */
 			~ControlerHandler(){}
 
 			/**
-			 * \fn 		Initialisation de la plateforme SARAH.
-			 * \detail	Mise en place du modèle MVC avec GrapicHandler et ModelHandler.
+			 * Initialisation de la plateforme SARAH.
+			 * \details	Mise en place du modèle MVC avec GrapicHandler et ModelHandler.
 			 * \return 	true si l'initialisation s'est bien passée, false sinon.
 			 */
 			bool Init()
@@ -136,7 +136,7 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Boucle principale d'évènements.
+			 * Boucle principale d'évènements.
 			 * \return 	true si la boucle a été quittée correctement, false sinon.
 			 */
 			bool MainLoop()
@@ -178,7 +178,7 @@ namespace Kernel
 		protected:
 
 			/**
-			 * \fn 		Récupération de la fenêtre sélectionnée du GraphicHandler.
+			 * Récupération de la fenêtre sélectionnée du GraphicHandler.
 			 * \return	La fenêtre sélectionnée du GraphicHandler (de type SFML::Window).
 			 * \todo 	Cette fonction devrait être dans GraphicHandler ce qui éviterait une relation d'ami. 
 			 */
@@ -191,7 +191,7 @@ namespace Kernel
 
 			/**
 			 * \brief 	Configuration générale de la plateforme.
-			 * \detail 	Mise à disposition de l'utilisateur (public) pour consultation 
+			 * \details	Mise à disposition de l'utilisateur (public) pour consultation 
 			 * 			ou changement (alors ne pas oublier de faire un GeneralConfigUpdate).
 			 */
 			GeneralConfig gConfig;
@@ -201,17 +201,17 @@ namespace Kernel
 			/**
 			 * \brief 	Gestionnaire de la Vue (type template).
 			 */
-			_GraphicHandlerType m_graphicHandler;
+			_GHType m_graphicHandler;
 
 			/**
 			 * \brief 	Gestionnaire du Modèle (type template).
 			 */
-			_ModelHandlerType m_modelHandler;
+			_MHType m_modelHandler;
 
 			/**
 			 * \brief 	Gestionnaire d'évènement (type template).
 			 */
-			_EventBinderType m_eventBinder;
+			_EBType m_eventBinder;
 
 			/**
 			 * \brief 	Horloge permettant un contexte temporel principal (de type SFML Clock).

@@ -14,14 +14,19 @@ set(CMAKE_CXX_FLAGS "-std=c++0x")
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
 
-set(DOXYFILE_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/ CACHE PATH 
-    Directory where the documentation is going to be generated)
+set(DOXYGEN_INPUT_DIR ${PROJECT_SOURCE_DIR})
+set(DOXYGEN_OUTPUT_DIR ${PROJECT_BINARY_DIR}/doc)
+
+configure_file(${PROJECT_SOURCE_DIR}/doc/Doxyfile.in ${PROJECT_BINARY_DIR}/doc/Doxyfile @ONLY)
+
 add_custom_target(doc
-                  ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/doc/config.dox
-                  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+                  ${DOXYGEN_EXECUTABLE} ${PROJECT_BINARY_DIR}/doc/Doxyfile
+                  WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
                   COMMENT "Generating API documentation with Doxygen" VERBATIM
 )
 ENDIF(DOXYGEN_FOUND)
+
+include_directories(doc)
 
 include_directories(src)
 add_subdirectory(src)

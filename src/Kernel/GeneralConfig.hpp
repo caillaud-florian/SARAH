@@ -4,7 +4,7 @@
  * \version 	0.1
  * \date     	28 Octobre 2013
  * \brief     	Fichier implémentant un contener de configuration.
- * \detail 		Classe principale de gestion de toutes les configurations différentes associées à un objet 
+ * \details		Classe principale de gestion de toutes les configurations différentes associées à un objet 
  * 				(e.g. GraphicHandler ou ModelHandler)
  */
 
@@ -43,36 +43,36 @@ namespace Kernel
 		public:
 			
 			/**
-			 * \fn 		Constructeur par défaut.
+			 * Constructeur par défaut.
 			 */
 			GeneralConfig();
 
 			/**
-			 * \fn 		Constructeur paramétré.
+			 * Constructeur paramétré.
 			 * \param 	p_configMap 	Conteneur pré-rempli de configuration.
 			 */
 			GeneralConfig(std::map<std::string, BaseConfig *>);
 
 			/**
-			 * \fn 		Constructeur paramétré.
+			 * Constructeur paramétré.
 			 * \param 	p_configVect 	Conteneur pré-rempli de configuration.
 			 */
 			GeneralConfig(std::vector<BaseConfig *>);
 
 			/**
-			 * \fn 		Destructeur.
+			 * Destructeur.
 			 */
 			~GeneralConfig();
 
 			/**
-			 * \fn 		Récupération d'une configuration à l'aide de son nom.
+			 * Récupération d'une configuration à l'aide de son nom.
 			 * \param 	p_configName 	Nom de la configuration à récupérer.
 			 * \return 	La configuration nommée p_ConfigName si elle existe, nullptr sinon.
 			 */
 			BaseConfig * GetConfig(std::string);
 
 			/**
-			 * \fn 		Ajout d'une configuration au conteneur.
+			 * Ajout d'une configuration au conteneur.
 			 * \param 	p_config 	La configuration à ajouter.
 			 * \return 	true si elle n'existait pas déjà, false sinon.
 			 */

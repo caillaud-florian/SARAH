@@ -4,7 +4,7 @@
  * \version 	0.1
  * \date     	28 Octobre 2013
  * \brief     	Fichier implémentant un modèle BaseConfig et ses dérivés.
- * \detail 		Une configuration permet de regrouper plusieurs données communes à un objet.
+ * \details		Une configuration permet de regrouper plusieurs données communes à un objet.
  *				Ces attributs sont public afin de permettre à l'utilisateur de les consulter
  *				et de les changer simplement (un ConfigUpdate sera sûrement nécessaire).
  * \todo		Créer une classe mère Configurable, ayant une fonction purement virtuelle
@@ -46,12 +46,12 @@ namespace Kernel
 		public:
 
 			/**
-			 * \fn 		Récupération du nom de la configuration (purement virtuelle).
+			 * Récupération du nom de la configuration (purement virtuelle).
 			 * \return 	Le nom de la configuration.
 			 */
 			virtual std::string GetName() const = 0;
 			/**
-			 * \fn 		Impression des données de la configuration sur la sortie standard (purement virtuelle).
+			 * Impression des données de la configuration sur la sortie standard (purement virtuelle).
 			 */
 			virtual void Print() const = 0;
 
@@ -69,7 +69,7 @@ namespace Kernel
 		public:
 
 			/**
-			 * \fn 		Constructeur par défaut.
+			 * Constructeur par défaut.
 			 */
 			WindowConfig():
 				title("Default Window"),
@@ -81,7 +81,7 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Constructeur paramétré.
+			 * Constructeur paramétré.
 			 * \param 	p_title 	Titre de la fenêtre.
 			 * \param 	p_videoMode	Mode vidéo utilisé (taille, etc.).
 			 * \param 	p_style 	Style de la fenêtre (FullScreen, etc.).
@@ -97,7 +97,7 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Redefinition de fonction GetName de BaseConfig
+			 * Redefinition de fonction GetName de BaseConfig
 			 * \return 	WindowConfig
 			 */
 			std::string GetName() const
@@ -106,8 +106,8 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Redefinition de la fonction Print de BaseConfig
-			 * \detail 	Imprime sur la sortie standard les attributs suivant un certain format
+			 * Redefinition de la fonction Print de BaseConfig
+			 * \details	Imprime sur la sortie standard les attributs suivant un certain format
 			 */
 			void Print() const
 			{

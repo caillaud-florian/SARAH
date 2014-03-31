@@ -4,7 +4,7 @@
  * \version 	1.0
  * \date     	28 Mars 2014
  * \brief     	Fichier décrivant la classe abstraite Observer.
- * \detail 		Classe utilisée dans l'élaboration du design pattern Observer/Observable
+ * \details		Classe utilisée dans l'élaboration du design pattern Observer/Observable
  *				et plus largement dans le design pattern MVC.
  */
 
@@ -43,22 +43,22 @@ namespace Kernel
 		public:
 
 			/**
-			 * \typedef 	Pointeur sur le type construit d'Observer.
+			 * Pointeur sur le type construit d'Observer.
 			 */
 			typedef Observer<_NotificationType> * 						ObserverType;
 			/**
-			 * \typedef 	Container de pointeur sur Observer de type std::set.
+			 * Container de pointeur sur Observer de type std::set.
 			 */
 			typedef typename std::set<ObserverType> 					ObserverContainerType;
 			/**
-			 * \typedef 	Iterateur sur le container de pointeur sur Observer.
+			 * Iterateur sur le container de pointeur sur Observer.
 			 */
 			typedef typename ObserverContainerType::iterator			ObserverContainerIteratorType;
 
 		public:
 
 			/**
-			 * \fn 		Ajout d'un pointeur sur Observer dans le container m_observerSet.
+			 * Ajout d'un pointeur sur Observer dans le container m_observerSet.
 			 * \param 	p_obs		Pointeur sur un objet héritant du type Observer.
 			 */
 			void AddObserver(ObserverType p_obs)
@@ -68,7 +68,7 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Suppression d'un pointeur sur Observer au sein du container m_observerSet.
+			 * Suppression d'un pointeur sur Observer au sein du container m_observerSet.
 			 * \param 	p_obs		Pointeur sur un objet héritant du type Observer.
 			 */
 			void RemoveObserver(ObserverType p_obs)
@@ -81,7 +81,7 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Suppression de tous les pointeurs sur Observer au sein du container m_observerSet.
+			 * Suppression de tous les pointeurs sur Observer au sein du container m_observerSet.
 			 */
 			void RemoveAllObservers()
 			{
@@ -89,7 +89,7 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Notification à un observateur.
+			 * Notification à un observateur.
 			 * \param 	p_obs			Pointeur sur l'objet héritant du type Observer à notifier.
 			 * \param 	p_notification	Notification à transmettre à l'observateur p_obs (type template).
 			 */
@@ -102,7 +102,7 @@ namespace Kernel
 			}
 
 			/**
-			 * \fn 		Notification à tous les observateurs.
+			 * Notification à tous les observateurs.
 			 * \param 	p_notification	Notification à transmettre à tous les observateurs (type template).
 			 */
 			void NotifyAll(_NotificationType p_notification)

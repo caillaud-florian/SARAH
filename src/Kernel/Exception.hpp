@@ -4,7 +4,7 @@
  * \version 	1.0
  * \date     	28 Mars 2014
  * \brief     	Fichier décrivant la classe Exception.
- * \detail 		Classe utilisée comme spécialisation d'une std::exception.
+ * \details		Classe utilisée comme spécialisation d'une std::exception.
  */
 
 #ifndef EXCEPTION
@@ -37,7 +37,7 @@ namespace Kernel
 		public:
 
 			/**
-			 * \fn 		Constructeur par défaut.
+			 * Constructeur par défaut.
 			 */
 			Exception():
 				std::exception(),
@@ -45,7 +45,7 @@ namespace Kernel
 			{}
 
 			/**
-			 * \fn 		Constructeur paramétré.
+			 * Constructeur paramétré.
 			 * \param 	p_str 	Le message d'erreur caractérisant l'exception.
 			 */
 			Exception(std::string p_str):
@@ -54,14 +54,14 @@ namespace Kernel
 			{}
 
 			/**
-			 * \fn 		Destructeur.
+			 * Destructeur.
 			 */
 			~Exception() throw()
 			{}
 
 			/**
-			 * \fn 		Récupération du message d'erreur m_message.
-			 * \detail	Surcharge de la fonction what de std::exception.
+			 * Récupération du message d'erreur m_message.
+			 * \details	Surcharge de la fonction what de std::exception.
 			 * \return 	Une chaîne de caractère représentant le message d'erreur.
 			 */
 			virtual const char* what() const throw()

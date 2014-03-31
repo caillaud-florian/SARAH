@@ -4,7 +4,7 @@
  * \version 	1.0
  * \date     	28 Mars 2014
  * \brief     	Fichier décrivant la classe GraphicHandlerBuilder.
- * \detail 		Classe utilisée pour la construction d'un object GraphicHandler
+ * \details		Classe utilisée pour la construction d'un object GraphicHandler
  *				à partir d'un ensemble de propriétés (typedef GeneralConfigMap)
  * 				selon le design pattern Builder.
  */
@@ -21,7 +21,9 @@
 
 #include "GraphicHandler.hpp"
 #include "GeneralConfig.hpp"
-
+/**
+ * Définition du nom usuel de la configuration traitée par cette classe.
+ */
 #define graphicHandlerBuilderConfigName "WindowConfig"
 
 /**
@@ -49,18 +51,18 @@ namespace Kernel
 		public:
 
 			/**
-			 * \typedef 	Un dictionnaire de noms associés à des valeur est une ConfigMap.
+			 * Un dictionnaire de noms associés à des valeur est une ConfigMap.
 			 */
 			typedef std::map<std::string, std::string> 	ConfigMap;
 			/**
-			 * \typedef 	Un dictionnaire de noms associés à une ConfigMap est une GeneralConfigMap.
+			 * Un dictionnaire de noms associés à une ConfigMap est une GeneralConfigMap.
 			 */
 			typedef std::map<std::string, ConfigMap>  	GeneralConfigMap;
 
 		public:
 
 			/**
-			 * \fn 		Opération de construction d'un GraphicHandler à l'aide d'un ensemble de propriétés.
+			 * Opération de construction d'un GraphicHandler à l'aide d'un ensemble de propriétés.
 			 * \param 	generalConfigMap 	Ensemble d'informations regroupé sous forme de dictionnaire de propriétés
 			 *								(typedef GeneralConfigMap).
 			 * \param 	graphHandler 		L'instance de GraphicHandler à construire.

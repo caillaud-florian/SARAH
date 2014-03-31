@@ -134,7 +134,7 @@ pre.fragment {
         font-family: Consolas, "Liberation Mono", Courier, monospace;
         font-size: 10pt;
         padding: 0.5em 1em;
-        background-color: #f5f5f5;
+        background-color: #f0f4fd;
         border: 1px solid #bbb;
         .border-radius(5px);
 }
@@ -152,7 +152,7 @@ div.fragment {
         font-family: Consolas, "Liberation Mono", Courier, monospace;
         font-size: 10pt;
         padding: 0.5em 1em;
-        background-color: #f5f5f5;
+        background-color: #F2F8FF;
         border: 1px solid #bbb;
         .border-radius(5px);
 }
@@ -206,12 +206,12 @@ body {
 }
 
 div.contents {
-    width: 950px;
+    width: 1200px;
     margin: 0 auto;
 }
 
 td.indexkey {
-	background-color: #EBEFF6;
+	background-color: #F9F9FF;
 	font-weight: bold;
 	border: 1px solid #C4CFE5;
 	margin: 2px 0px 2px 0;
@@ -221,7 +221,7 @@ td.indexkey {
 }
 
 td.indexvalue {
-	background-color: #EBEFF6;
+	background-color: #F9F9FF;
 	border: 1px solid #C4CFE5;
 	padding: 2px 10px;
 	margin: 2px 0px;
@@ -821,7 +821,7 @@ div.ingroups a
 
 div.header
 {
-	width: 950px;
+	width: 1200px;
 	margin: 2em auto;
 	border-bottom: 1px solid #999;
 }
@@ -1078,7 +1078,7 @@ tr.heading h2 {
     width: 100%;
     z-index: 101;
     font-size: 11pt;
-    background-color: #EAF5DB;
+    background-color: rgb(220, 234, 252);
     border-left: 1px solid #999;
     border-right: 1px solid #999;
     border-bottom: 1px solid #999;
@@ -1145,7 +1145,7 @@ body
     margin-top: 25px;
     border-top: 2px solid #999;
     border-bottom: 2px solid #999;
-    background-color: rgb(140, 200, 65);
+    background-color: rgb(65, 195, 200);
 }
 
 #banner
@@ -1198,7 +1198,7 @@ body
 
 div.contents, #content
 {
-    width: 950px;
+    width: 1200px;
     margin: 0 auto;
     padding: 0;
 }
@@ -1239,7 +1239,7 @@ div.contents a, #content a
 {
     padding: 1px;
     text-decoration: none;
-    color: rgb(70, 100, 30);
+    color: rgb(30, 89, 100);
 }
 
 div.contents a:hover, #content a:hover
