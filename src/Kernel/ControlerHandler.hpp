@@ -68,10 +68,10 @@ namespace Kernel
 
 		public:
 
-			///
-			/// Constructeur par défaut.
-			/// \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
-			///
+			/**
+			 * Constructeur par défaut.
+			 * \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
+			 */
 			ControlerHandler():
 			    gConfig(),
 				m_graphicHandler(),
@@ -82,13 +82,13 @@ namespace Kernel
 
 			}
 
-			///
-			/// Constructeur paramétré.
-			/// \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
-			/// \details	Construction à partir d'une configuration générale.
-			/// \param 	p_gConfig 	Objet représentant une configuration générale 
-			///						et avec lequel on initialise le controleur.
-			///
+			/**
+			 * Constructeur paramétré.
+			 * \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
+			 * \details	Construction à partir d'une configuration générale.
+			 * \param 	p_gConfig 	Objet représentant une configuration générale 
+			 *						et avec lequel on initialise le controleur.
+			 */
 			ControlerHandler(GeneralConfig & p_gConfig):
 			    gConfig(p_gConfig),
 				m_graphicHandler(p_gConfig),
@@ -99,14 +99,14 @@ namespace Kernel
 
 			}
 
-			///
-			/// Constructeur paramétré.
-			/// \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
-			/// \details	Construction à partir d'une configuration générale sous forme de dictionnaire.
-			/// 			Généralement issue d'une lecture de fichier .INI par IniConfigReader.
-			/// \param 	p_gConfig 	Objet représentant une configuration générale 
-			///						et avec lequel on initialise le controleur.
-			///
+			/**
+			 * Constructeur paramétré.
+			 * \brief 	Construction du GraphicHandler, du ModelHandler et du EventBinder.
+			 * \details	Construction à partir d'une configuration générale sous forme de dictionnaire.
+			 * 			Généralement issue d'une lecture de fichier .INI par IniConfigReader.
+			 * \param 	p_gConfig 	Objet représentant une configuration générale 
+			 *						et avec lequel on initialise le controleur.
+			 */
 			ControlerHandler(GeneralConfigMap & p_gConfig):
 			    gConfig(),
 			    m_graphicHandler(),

@@ -49,17 +49,17 @@ namespace Kernel
 
 		public:
 
-			///
-			/// Constructeur par défaut.
-			///
+			/**
+			 * Constructeur par défaut.
+			 */
 			ModelHandler();
 
-			///
-			/// Constructeur paramétré.
-			/// \details	Construction à partir d'une configuration générale.
-			/// \param 	p_gConfig 	Objet représentant une configuration générale 
-			///						et avec lequel on initialise le controleur.
-			///
+			/**
+			 * Constructeur paramétré.
+			 * \details	Construction à partir d'une configuration générale.
+			 * \param 	p_gConfig 	Objet représentant une configuration générale 
+			 *						et avec lequel on initialise le controleur.
+			 */
 			ModelHandler(GeneralConfig &);
 
 			/**

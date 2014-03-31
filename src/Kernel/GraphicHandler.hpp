@@ -60,17 +60,17 @@ namespace Kernel
 
 		public:
 
-			///
-			/// Constructeur par défaut.
-			///
+			/**
+			 * Constructeur par défaut.
+			 */
 			GraphicHandler();
 
-			///
-			/// Constructeur paramétré.
-			/// \details	Construction à partir d'une configuration générale.
-			/// \param 	p_gConfig 	Objet représentant une configuration générale 
-			///						et avec lequel on initialise le handler.
-			///
+			/**
+			 * Constructeur paramétré.
+			 * \details	Construction à partir d'une configuration générale.
+			 * \param 	p_gConfig 	Objet représentant une configuration générale 
+			 *						et avec lequel on initialise le handler.
+			 */
 			GraphicHandler(GeneralConfig &);
 
 			/**
@@ -79,7 +79,7 @@ namespace Kernel
 			~GraphicHandler();
 
 			/**
-			 * Initialisation de l'interface de la plateforme.
+			 * Initialisation de l'interface de la plateforme (virtuelle).
 			 * \return 	true si l'initialisation s'est bien passée, false sinon.
 			 */
 			virtual bool Init();
