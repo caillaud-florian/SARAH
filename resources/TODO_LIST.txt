@@ -1,14 +1,12 @@
 TODO LIST:
 
--Mettre en place la deuxième partie du cmake (ie : une librairie pour chaque dossier principal, spécialement pour Utilities qui doit être dynamique)
-
--Mettre en place des tests avec cmake pour pouvoir tester sereinement
-
 -Commenter tous les fichiers d'entête et voir pour générer la documentation avec cmake
 
 -Réaliser la première release (version 1.0) !!!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
+		
+		-Mettre en place des tests avec cmake pour pouvoir tester sereinement
 
 		-Peaufiner les modèle MVC pour qu'il soit MAXY clean
 
@@ -24,7 +22,7 @@ TODO LIST:
 
 				-Développer le framework pour la 3D !!!!!
 					-mettre en place les shaders et une vraie gestion du pipeline openGL
-					-permettre d'afficher UN seul maillage (reader OBJ) -> test de charge avec de GROS maillages pour être sûr d'être efficace !
+					-permettre d afficher UN seul maillage (reader OBJ) -> test de charge avec de GROS maillages pour être sûr d'être efficace !
 					-ne pas oublier de faire tout ça simple et abordable !!
 					-pouvoir choisir son .obj dans les fichiers de config (poour l'instant)
 
