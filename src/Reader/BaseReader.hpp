@@ -28,7 +28,7 @@ namespace Sarah
 namespace IO
 {
 	/**
-	 * \enum 	FileReadState
+	 * \enum IO::FileReadState
 	 * \details	État du de la lecture de fichier.
 	 */
 	enum FileReadState

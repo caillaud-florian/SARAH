@@ -1,17 +1,39 @@
+/**
+ * \file		NMatrixUtilities.hpp
+ * \author		fcaillaud
+ * \version 	1.0
+ * \date     	2 Avril 2014
+ * \brief     	Fichier offrant des traitement usuels pour les matrices.
+ */
+
 #ifndef NMATRIX_UTILITIES
 #define NMATRIX_UTILITIES
 
 #include "NMatrix.hpp"
 
+/**
+ * \namespace 	alg
+ * \brief 		Nom de domaine tertiaire, partie utilitaire.
+ * \todo 		Migrer vers le namespace gu.
+ */
 namespace alg
 {
 	
+	/**
+	 * \enum 	InversionMethod
+	 * \brief 	Type d'inversion de matrice.
+	 */
 	enum InversionMethod
 	{
-		GAUSS_JORDAN,
-		COFACTOR
+		GAUSS_JORDAN, 		/*!< Inversion de Gauss-Jordan. */
+		COFACTOR 			/*!< Inversion par la méthode des cofacteurs. */
 	};
 
+	/**
+	 * Calcul du déterminant d'une matrice.
+	 * \param 	pMatrix 	La matrice à analyser.
+	 * \return 	Le déterminant de la matrice pMatrix.
+	 */
 	template<typename MType>
 	double Determinant(const NMatrix<MType> pMatrix)
 	{
@@ -47,6 +69,13 @@ namespace alg
 		return vDetPos - vDetNeg;
 	}
 
+	/**
+	 * Calcul du cofacteur d'une matrice aux indices voulus.
+	 * \param 	pI 			L'indice de la ligne.
+	 * \param	pJ 			L'indice de la colonne.
+	 * \param	pMatrix 	La matrice à analyser.
+	 * \return 	Le cofacteur de pMatrix aux indices pI et pJ.
+	 */
 	template<typename MType>
 	double Cofactor(unsigned int pI, unsigned int pJ, const NMatrix<MType> pMatrix)
 	{
@@ -70,6 +99,12 @@ namespace alg
 		return Determinant(vMatrix);
 	}
 
+	/**
+	 * Calcul de la comatrice d'une matrice.
+	 * \param 	pMatrix 	La matrice à analyser.
+	 * \return 	La comatrice de pMatrix.
+	 * \details Utilisation des cofacteurs.
+	 */
 	template<typename MType>
 	NMatrix<MType> Adjugate(const NMatrix<MType> pMatrix)
 	{
@@ -90,6 +125,11 @@ namespace alg
 		return vMatrix;
 	}
 
+	/**
+	 * Calcul de la transposée d'une matrice.
+	 * \param 	pMatrix 	La matrice à analyser.
+	 * \return 	La transposée de pMatrix.
+	 */
 	template<typename MType>
 	NMatrix<MType> Transpose(const NMatrix<MType> pMatrix)
 	{
@@ -106,6 +146,13 @@ namespace alg
 		return vMatrix;
 	}	
 
+	/**
+	 * Calcul de l'inversion d'une matrice.
+	 * \param 	pMatrix 	La matrice à analyser.
+	 * \param 	pIMethod 	La méthode utilisée (Gauss-Jordan ou cofacteurs).
+	 * \return 	La matrice inverse de pMatrix.
+	 * \todo 	N'y a t'il pas des cas ou il est impossible d'inverser ??
+	 */
 	template<typename MType>
 	NMatrix<MType> Inversion(const NMatrix<MType> pMatrix, InversionMethod pIMethod = COFACTOR)
 	{
@@ -127,6 +174,11 @@ namespace alg
 		}
 	}
 
+	/**
+	 * Calcul de l'inversion d'une matrice avec la méthode des cofacteurs.
+	 * \param 	pMatrix 	La matrice à analyser.
+	 * \return 	La matrice inverse de pMatrix.
+	 */
 	template<typename MType>
 	NMatrix<MType> CofactorInversion(const NMatrix<MType> pMatrix)
 	{
@@ -140,6 +192,12 @@ namespace alg
 		return (1 / vDeterminant) * Transpose(Adjugate(pMatrix));
 	}
 
+	/**
+	 * Calcul de l'inversion d'une matrice avec la méthode de Gauss-Jordan.
+	 * \param 	pMatrix 	La matrice à analyser.
+	 * \return 	La matrice inverse de pMatrix.
+	 * \todo 	À faire.
+	 */
 	template<typename MType>
 	NMatrix<MType> GaussJordanInversion(const NMatrix<MType> pMatrix)
 	{

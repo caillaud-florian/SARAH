@@ -71,7 +71,7 @@ namespace gu
 			return pNumber;
 
 		if(pNbLeftFractDigit > NbDigit(vFractPart) - 1)
-			Truncate(pNumber, NbDigit(vFractPart) - 1);
+			return Truncate(pNumber, NbDigit(vFractPart) - 1);
 
 		vFractPart *= pow(10, pNbLeftFractDigit);
 		vFractPart = floor(vFractPart);

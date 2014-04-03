@@ -74,9 +74,9 @@ namespace gu
 	
 ///////////////////////////// OTHERS ////////////////////////////////
 
-	long GetFileSize(std::string FilePath)
+	long GetFileSize(std::string filePath)
 	{
-		std::ifstream ifs(FilePath);
+		std::ifstream ifs(filePath);
 
 		if(!ifs)
 			return -1;

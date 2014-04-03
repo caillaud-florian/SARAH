@@ -1,37 +1,72 @@
+/**
+ * \file		Msg.hpp
+ * \author		fcaillaud
+ * \version 	1.0
+ * \date     	2 Avril 2014
+ * \brief     	Fichier décrivant la classe Msg.
+ * \details		Classe utilisée comme utilitaire d'affichage de message.
+ * \todo 		Revoir le concepte en entier. Peut être amélioré et simplifié pour l'utilisation.
+ */
+
 #ifndef MESSAGE_MSG
 #define MESSAGE_MSG
 
 #include <iostream>
 #include <string>
 
+/**
+ * \namespace 	msg
+ * \brief 		Nom de domaine tertiaire, partie utilitaire.
+ * \todo 		Migrer vers gu.
+ */
 namespace msg
 {
 
+	/**
+	 * \enum 	MSG_FLAG_ENUM
+	 * \brief	Type de message à envoyer.
+	 */
 	enum class MSG_FLAG_ENUM : char
 	{
-		STANDARD 	= 0,
-		TAB			= 1,
-		LOG			= 2,
-		ERROR 		= 3,
-		EVERY_JUMP 	= 4, 
-		NO_JUMP 	= 5,
-		CONCAT 		= 6,
-		RED			= 7,
-		GREEN		= 8,
-		BLUE		= 9
-
+		STANDARD 	= 0,	/*!< Affichage avec std::cout. */	
+		LOG			= 2,	/*!< Affichage avec std::clog. */	
+		TAB			= 1,	/*!< Affichage séparant les paramètres d'une tabulation, avec std::cout. */	
+		ERROR 		= 3,	/*!< Affichage avec std::cerr. */	
+		EVERY_JUMP 	= 4, 	/*!< Affichage séparant les paramètres d'un saut de ligne, avec std::cout. */	
+		NO_JUMP 	= 5,	/*!< Affichage ne sautant pas de ligne à la fin, avec std::cout. */	
+		CONCAT 		= 6,	/*!< Affichage n'inserant pas d'espace entre les paramètres, avec std::cout. */	
+		RED			= 7,	/*!< Affichage rouge, avec std::cout. */	
+		GREEN		= 8,	/*!< Affichage vert, avec std::cout. */	
+		BLUE		= 9		/*!< Affichage bleu, avec std::cout. */	
 	};
 	
+	/**
+	 * \class 	Msg
+	 * \brief 	Classe d'affichage d'un message simple.
+	 */
 	class Msg
 	{
 
 		public:
 
+			/**
+			 * Constructeur par défaut.
+			 * \details Saute une ligne.
+			 */
 			Msg()
 			{
 				std::cout << std::endl;
 			}
 
+			/**
+			 * Constructeur paramétré.
+			 * \param 	pHead 	Le premier paramètre de la liste variable de paramètres.
+			 * \param 	pTail 	Le reste des paramètres de la liste variable de paramètres.
+			 * \details	Pour afficher un message il faut utiliser ce constructeur. Il utilise 
+			 * 			les variadic template afin de permettre d'ajouter autant de paramètre 
+			 *			que l'on veut à l'affichage. L'affichage est récursif sur le nombre de 
+			 *			paramètres.
+			 */
 			template <typename H, typename ...T>
 			Msg(H pHead, T... pTail)
 			{
@@ -44,16 +79,29 @@ namespace msg
 
 	};
 
+	/**
+	 * \class 	Msg_Spe
+	 * \brief 	Classe d'affichage d'un message spécifique.
+	 */
 	class Msg_Spe
 	{
 
 		public:
 
+			/**
+			 * Constructeur par défaut.
+			 * \details Saute une ligne.
+			 */
 			Msg_Spe(): mFlag(MSG_FLAG_ENUM::STANDARD)
 			{
 				std::cout << std::endl;
 			}
 
+			/**
+			 * Constructeur paramétré.
+			 * \param 	pFlag 	Le type de message à afficher.
+			 * \param 	pHead 	La valeur à afficher.
+			 */
 			template <typename F, typename H>
 			Msg_Spe(F pFlag, H pHead): mFlag(pFlag) 
 			{
@@ -94,6 +142,16 @@ namespace msg
 				}
 			}
 
+			/**
+			 * Constructeur paramétré.
+			 * \param 	pFlag 	Le type de message à afficher.
+			 * \param 	pHead 	La premières des valeurs à afficher.
+			 * \param 	pTail 	Les autres valeurs à afficher.
+			 * \details	Pour afficher un message il faut utiliser ce constructeur. Il utilise 
+			 * 			les variadic template afin de permettre d'ajouter autant de paramètre 
+			 *			que l'on veut à l'affichage. L'affichage est récursif sur le nombre de 
+			 *			paramètres.
+			 */
 			template <typename F, typename H, typename ...T>
 			Msg_Spe(F pFlag, H pHead, T... pTail): mFlag(pFlag)
 			{
@@ -141,6 +199,9 @@ namespace msg
 
 		private:
 
+			/**
+			 * \brief 	Type du message à afficher.
+			 */
 			const MSG_FLAG_ENUM mFlag;
 
 	};
