@@ -28,12 +28,6 @@ namespace Sarah
 	class MyModelHandler : public Kernel::ModelHandler, public Kernel::Observable<GLfloat *>
 	{
 
-		/**
-		 * \brief 	La classe ControlerHandler est en ami pour pouvoir accéder librement à MyModelHandler.
-		 * \todo 	Voir comment ne plus avoir besoin de cette amitié plus ou moins anormale.
-		 */
-		template<class M, class G, class E> friend class ControlerHandler;
-
 		public:
 
 			/**

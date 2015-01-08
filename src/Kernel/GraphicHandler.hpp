@@ -40,24 +40,6 @@ namespace Kernel
 	class GraphicHandler
 	{
 
-		/**
-		 * \brief 	La classe EventBinder est en ami pour pouvoir accéder librement à GraphicHandler et ses fenêtres.
-		 * \todo 	Voir comment ne plus avoir besoin de cette amitié plus ou moins anormale.
-		 */
-		friend class EventBinder;
-
-		/**
-		 * \brief 	La classe GraphicHandlerBuilder est en ami pour pouvoir accéder librement à GraphicHandler.
-		 * \todo 	Voir comment ne plus avoir besoin de cette amitié plus ou moins anormale.
-		 */
-		friend class GraphicHandlerBuilder;
-
-		/**
-		 * \brief 	La classe ControlerHandler est en ami pour pouvoir accéder librement à GraphicHandler.
-		 * \todo 	Voir comment ne plus avoir besoin de cette amitié plus ou moins anormale.
-		 */
-		template<class M, class G, class E> friend class ControlerHandler;
-
 		public:
 
 			/**
@@ -88,6 +70,12 @@ namespace Kernel
 			 * Mise à jour de la fenêtre sélectionnée à l'aide de gConfig.
 			 */
 			void WindowUpdate();
+
+			/**
+			 * Récupération de la fenêtre sélectionnée du GraphicHandler.
+			 * \return	La fenêtre sélectionnée du GraphicHandler (de type SFML::Window).
+			 */
+			sf::Window & GetFocusedWindow();
 
 		public:
 

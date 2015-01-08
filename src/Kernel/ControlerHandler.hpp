@@ -144,14 +144,13 @@ namespace Kernel
 				m_modelHandler.Draw();
 
 			    // TODO : plutot tant qu'il y a une fenêtre d'ouverte !
-			    while (GetFocusedWindow().isOpen())
+			    while (m_graphicHandler.GetFocusedWindow().isOpen())
 			    {
-			        // gère les évènements
+			        // Gère les évènements
 			        m_eventBinder.Bind();
 
 			        if(!m_eventBinder.IsPaused())
 			        {
-
 			            // Clear the color and depth buffers
 			            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -163,28 +162,15 @@ namespace Kernel
 			            glRotatef(m_generalClock.getElapsedTime().asSeconds() * 30, 0.f, 1.f, 0.f);
 			            glRotatef(m_generalClock.getElapsedTime().asSeconds() * 90, 0.f, 0.f, 1.f);
 				
-
 			            // Draw the cube
-			            glDrawArrays(GL_TRIANGLES, 0, 36);
+			            glDrawArrays(GL_TRIANGLES, 0, 3);
 
 			            // Finally, display the rendered frame on screen
-			            GetFocusedWindow().display();
+			            m_graphicHandler.GetFocusedWindow().display();
 			        }
 			    }
 
 				return true;
-			}
-
-		protected:
-
-			/**
-			 * Récupération de la fenêtre sélectionnée du GraphicHandler.
-			 * \return	La fenêtre sélectionnée du GraphicHandler (de type SFML::Window).
-			 * \todo 	Cette fonction devrait être dans GraphicHandler ce qui éviterait une relation d'ami. 
-			 */
-			sf::Window & GetFocusedWindow()
-			{
-			    return m_graphicHandler.m_focusedWindow;
 			}
 
 		public:

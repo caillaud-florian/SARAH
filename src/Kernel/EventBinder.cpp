@@ -14,7 +14,7 @@ EventBinder::EventBinder(GraphicHandler & p_graphicHandler, ModelHandler & p_mod
 void EventBinder::Bind()
 {
 	sf::Event event;
-	while (GetFocusedWindow().pollEvent(event))
+	while (m_graphicHandler.GetFocusedWindow().pollEvent(event))
 	{
 	    switch (event.type)
 	    {
@@ -97,14 +97,9 @@ bool EventBinder::IsPaused()
 	return m_pause;
 }
 
-sf::Window & EventBinder::GetFocusedWindow()
-{
-	return m_graphicHandler.m_focusedWindow;
-}
-
 void EventBinder::BindClosedEvent()
 {
-	GetFocusedWindow().close();
+	m_graphicHandler.GetFocusedWindow().close();
 }
 
 void EventBinder::BindResizedEvent(int p_width, int p_height)

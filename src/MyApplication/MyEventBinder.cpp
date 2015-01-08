@@ -9,7 +9,7 @@ MyEventBinder::MyEventBinder(Kernel::GraphicHandler & p_graphicHandler, Kernel::
 
 void MyEventBinder::BindClosedEvent()
 {
-	GetFocusedWindow().close();
+	m_graphicHandler.GetFocusedWindow().close();
 }
 
 void MyEventBinder::BindResizedEvent(int p_width, int p_height)
@@ -28,10 +28,10 @@ void MyEventBinder::BindTextEnteredEvent(sf::Uint32 p_char)
 void MyEventBinder::BindKeyPressedEvent(sf::Keyboard::Key p_key, bool p_ctrl, bool p_alt, bool p_shift, bool p_syst)
 {
 	if(p_key == sf::Keyboard::Escape)
-		GetFocusedWindow().close();
+		m_graphicHandler.GetFocusedWindow().close();
 	else
 	{
-		msg::Msg_Spe(msg::MSG_FLAG_ENUM::BLUE, "You press a the key number : ", static_cast<int>(p_key), " (ctrl : ", p_ctrl, "; alt : ", p_alt, "; shift : ", p_shift, "; syst : ", p_syst, ")");
+		msg::Msg_Spe(msg::MSG_FLAG_ENUM::BLUE, "You press on the key number : ", static_cast<int>(p_key), " (ctrl : ", p_ctrl, "; alt : ", p_alt, "; shift : ", p_shift, "; syst : ", p_syst, ")");
 	}
 }
 

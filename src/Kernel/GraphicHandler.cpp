@@ -38,7 +38,13 @@ void GraphicHandler::WindowUpdate()
     WindowConfig * vWConf;
     if((vWConf = (WindowConfig *)gConfig.GetConfig("WindowConfig")) != nullptr){
         m_focusedWindow.create(vWConf->videoMode, vWConf->title, vWConf->style, vWConf->contextSettings);
-    }   
+        delete vWConf;
+    }
+}
+
+sf::Window & GraphicHandler::GetFocusedWindow()
+{
+    return m_focusedWindow;
 }
 
 }

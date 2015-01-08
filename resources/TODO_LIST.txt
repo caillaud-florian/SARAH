@@ -1,6 +1,10 @@
 TODO LIST:
 
--Commenter tous les fichiers d'entête et voir pour générer la documentation avec cmake
+-!! La relation entre la Vue et le Modèle marche selon MVC.
+-!! La relation entre le Controleur et le Modèle demande peut être à être clarifié (ok avec le controleur, mais quel intérêt dans EventBinder ?).
+-!! La relation entre le Controleur et la Vue marche selon MVC.
+
+-Mettre le MVC au clair avant la deuxième release.
 
 -Réaliser la première release (version 1.0) !!!
 
@@ -20,11 +24,11 @@ TODO LIST:
 
 		-------------------------------------------------------------------------------------------------------------------------------------------
 
-				-Développer le framework pour la 3D !!!!!
-					-mettre en place les shaders et une vraie gestion du pipeline openGL
-					-permettre d afficher UN seul maillage (reader OBJ) -> test de charge avec de GROS maillages pour être sûr d'être efficace !
-					-ne pas oublier de faire tout ça simple et abordable !!
-					-pouvoir choisir son .obj dans les fichiers de config (poour l'instant)
+				-Développer le framework pour la 2D
+					-gestion des vues (travaille en lien avec la 3D)
+					-gestion des dessins simples
+					-gestion des sprite, textures, etc.
+					-pouvoir facilement créer un tableau, un personnage, charger les tuiles et pouvoir bouger dans la fenêtre.
 
 				-Mettre à jour entièrement la documentation, verifier erreurs/exceptions, warning, fuites mémoire !!!
 
@@ -32,11 +36,11 @@ TODO LIST:
 
 				-----------------------------------------------------------------------------------------------------------------------------------
 
-						-Développer le framework pour la 2D
-							-gestion des vues (travaille en lien avec la 3D)
-							-gestion des dessins simples
-							-gestion des sprite, textures, etc.
-							-pouvoir facilement créer un tableau, un personnage, charger les tuiles et pouvoir bouger dans la fenêtre.
+						-Développer le framework pour la 3D !!!!!
+							-mettre en place les shaders et une vraie gestion du pipeline openGL
+							-permettre d afficher UN seul maillage (reader OBJ) -> test de charge avec de GROS maillages pour être sûr d'être efficace !
+							-ne pas oublier de faire tout ça simple et abordable !!
+							-pouvoir choisir son .obj dans les fichiers de config (poour l'instant)
 
 						-Mettre à jour entièrement la documentation, verifier erreurs/exceptions, warning, fuites mémoire !!!
 

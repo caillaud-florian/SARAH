@@ -64,13 +64,6 @@ namespace Kernel
 		protected:
 
 			/**
-			 * Récupération de la fenêtre sélectionnée du GraphicHandler.
-			 * \return	La fenêtre sélectionnée du GraphicHandler (de type SFML::Window).
-			 * \todo 	Cette fonction devrait être dans GraphicHandler ce qui éviterait une relation d'ami. 
-			 */
-			sf::Window & GetFocusedWindow();
-
-			/**
 			 * Réaction à l'action de fermeture de la fenêtre (virtuelle).
 			 * \details	Si nécessaire il est possible de redefinir cette fonction dans une classe dérivée de 
 			 *			EventBinder	afin de personnaliser son fonctionnement.

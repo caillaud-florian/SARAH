@@ -17,7 +17,7 @@
 #include <SFML/Window.hpp>
 
 #include "Utilities/BasicTypeOperations/BasicTypeConverter.hpp"
-#include "Utilities/BasicTypeOperations/StringOperation.hpp"
+#include "Utilities/BasicTypeOperations/BasicStringOperation.hpp"
 
 #include "GraphicHandler.hpp"
 #include "GeneralConfig.hpp"

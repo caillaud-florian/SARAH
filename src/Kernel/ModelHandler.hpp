@@ -41,12 +41,6 @@ namespace Kernel
 	class ModelHandler
 	{
 
-		/**
-		 * \brief 	La classe ControlerHandler est en ami pour pouvoir accéder librement à ModelHandler.
-		 * \todo 	Voir comment ne plus avoir besoin de cette amitié plus ou moins anormale.
-		 */
-		template<class M, class G, class E> friend class ControlerHandler;
-
 		public:
 
 			/**

@@ -13,18 +13,21 @@ namespace Modeling
 		m_colors()
 	{
 		m_vertices.push_back(geo::Vertex(-50, -50, -50));
-		m_colors.push_back(geo::Vertex(0, 1, 1));
+		m_colors.push_back(geo::Vertex(1, 0, 0));
 
 		m_vertices.push_back(geo::Vertex(-50, 50, -50));
-		m_colors.push_back(geo::Vertex(0, 0, 1));
+		m_colors.push_back(geo::Vertex(0, 1, 0));
 
 		m_vertices.push_back(geo::Vertex(-50, -50, 50));
-		m_colors.push_back(geo::Vertex(0, 1, 1));
+		m_colors.push_back(geo::Vertex(0, 0, 1));
 
 		Face face; face.push_back(0); face.push_back(1); face.push_back(2);
 		m_faces.push_back(face);
 	}
 
+	/*
+	 * \todo Ne pas oublier de delete le pointeur glMesh !
+	 */
 	GLfloat * BaseMesh::Draw()
 	{
 		GLfloat * glMesh = new GLfloat[(m_vertices.size() + m_colors.size()) * 3];
@@ -47,7 +50,6 @@ namespace Modeling
 		}
 		    
 		return glMesh;
-
 	}
 	
 }
