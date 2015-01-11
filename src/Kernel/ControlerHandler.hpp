@@ -139,7 +139,7 @@ namespace Kernel
 			 * Boucle principale d'évènements.
 			 * \return 	true si la boucle a été quittée correctement, false sinon.
 			 */
-			bool MainLoop()
+			virtual bool MainLoop()
 			{
 				m_modelHandler.Draw();
 

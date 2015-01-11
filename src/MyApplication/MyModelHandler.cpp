@@ -5,13 +5,20 @@ namespace Sarah
 
 MyModelHandler::MyModelHandler():
 	ModelHandler(),
-    m_loadedMesh("test1")
+    m_loadedMesh("test1"),
+    m_drawObj(new MyDrawableObject())
 {}
 
 MyModelHandler::MyModelHandler(Kernel::GeneralConfig & p_gConfig):
 	ModelHandler(p_gConfig),
-    m_loadedMesh("test1")
+    m_loadedMesh("test1"),
+    m_drawObj(new MyDrawableObject())
 {}
+
+MyModelHandler::~MyModelHandler()
+{
+	delete m_drawObj;
+}
 
 bool MyModelHandler::Init()
 {
@@ -25,7 +32,8 @@ bool MyModelHandler::Load()
 
 void MyModelHandler::Draw()
 {
-   	NotifyAll(m_loadedMesh.Draw());
+	m_drawObj->SetObject(m_loadedMesh.Draw());
+   	NotifyAll(m_drawObj);
 }
 
 }

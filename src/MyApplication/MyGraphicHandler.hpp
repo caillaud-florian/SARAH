@@ -24,7 +24,7 @@ namespace Sarah
 	 * \class 	MyGraphicHandler
 	 * \brief 	Personnalisation de la classe GraphicHandler.
 	 */
-	class MyGraphicHandler : public Kernel::GraphicHandler, public Kernel::Observer<GLfloat *>
+	class MyGraphicHandler : public Kernel::GraphicHandler
 	{
 
 		public:

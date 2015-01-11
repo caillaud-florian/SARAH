@@ -17,6 +17,8 @@
 #include <SFML/OpenGL.hpp>
 
 #include "GeneralConfig.hpp"
+#include "Observer.hpp"
+#include "DrawableObject.hpp"
 
 /**
  * \namespace 	Sarah 	
@@ -37,7 +39,7 @@ namespace Kernel
 	 * \brief	Classe GraphicHandler permettant de gérer les modules liée à l'interface de la plateforme SARAH.
 	 * \see 	ModelHandler ControlerHandler
 	 */
-	class GraphicHandler
+	class GraphicHandler : public Observer<DrawableObject *>
 	{
 
 		public:
@@ -45,7 +47,13 @@ namespace Kernel
 			/**
 			 * Constructeur par défaut.
 			 */
-			GraphicHandler();
+			GraphicHandler():
+			    gConfig(),
+				m_focusedWindow(),
+				m_generalClock()
+			{
+			    m_focusedWindow.setVisible(false);
+			}
 
 			/**
 			 * Constructeur paramétré.
@@ -53,29 +61,53 @@ namespace Kernel
 			 * \param 	p_gConfig 	Objet représentant une configuration générale 
 			 *						et avec lequel on initialise le handler.
 			 */
-			GraphicHandler(GeneralConfig &);
+			GraphicHandler(GeneralConfig & p_gConfig):
+			    gConfig(p_gConfig),
+				m_focusedWindow(),
+				m_generalClock()
+			{
+			    WindowUpdate();
+			}
 
 			/**
 			 * Destructeur.
 			 */
-			~GraphicHandler();
+			~GraphicHandler(){}
 
 			/**
 			 * Initialisation de l'interface de la plateforme (virtuelle).
 			 * \return 	true si l'initialisation s'est bien passée, false sinon.
 			 */
-			virtual bool Init();
+			virtual bool Init()
+			{
+				return true;
+			}
 
 			/**
 			 * Mise à jour de la fenêtre sélectionnée à l'aide de gConfig.
 			 */
-			void WindowUpdate();
+			void WindowUpdate()
+			{
+			    WindowConfig * vWConf;
+			    if((vWConf = (WindowConfig *)gConfig.GetConfig("WindowConfig")) != nullptr){
+			        m_focusedWindow.create(vWConf->videoMode, vWConf->title, vWConf->style, vWConf->contextSettings);
+			        delete vWConf;
+			    }
+			}
+
+			void Update(DrawableObject * p_object)
+			{
+				p_object->Draw();
+			}
 
 			/**
 			 * Récupération de la fenêtre sélectionnée du GraphicHandler.
 			 * \return	La fenêtre sélectionnée du GraphicHandler (de type SFML::Window).
 			 */
-			sf::Window & GetFocusedWindow();
+			sf::Window & GetFocusedWindow()
+			{
+			    return m_focusedWindow;
+			}
 
 		public:
 

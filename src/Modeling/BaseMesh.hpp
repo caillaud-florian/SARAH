@@ -54,6 +54,8 @@ namespace Modeling
 			 */
 			BaseMesh(std::string p_meshName = "Standard Mesh");
 
+			~BaseMesh();
+
 			/**
 			 * Mise en forme des données du maillage (sommets et autres) pour 
 			 * le chargement au sein du pipeline OpenGL.
@@ -82,6 +84,8 @@ namespace Modeling
 			 * \brief 	Liste des couleurs associées aux sommets du maillage.
 			 */
 			std::vector<geo::Vertex> 	m_colors;
+
+			GLfloat * 					m_glMesh;
 	};
 	
 }

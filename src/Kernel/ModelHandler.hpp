@@ -18,6 +18,7 @@
 
 #include "GeneralConfig.hpp"
 #include "Observable.hpp"
+#include "DrawableObject.hpp"
 
 /**
  * \namespace 	Sarah 	
@@ -38,7 +39,7 @@ namespace Kernel
 	 * \brief	Classe ModelHandler permettant de gérer toutes les structures de données et classes de traitement.
 	 * \see 	GraphicHandler ControlerHandler
 	 */
-	class ModelHandler
+	class ModelHandler : public Observable<DrawableObject *>
 	{
 
 		public:
@@ -46,7 +47,9 @@ namespace Kernel
 			/**
 			 * Constructeur par défaut.
 			 */
-			ModelHandler();
+			ModelHandler():
+				gConfig(),
+				m_generalClock(){}
 
 			/**
 			 * Constructeur paramétré.
@@ -54,30 +57,38 @@ namespace Kernel
 			 * \param 	p_gConfig 	Objet représentant une configuration générale 
 			 *						et avec lequel on initialise le controleur.
 			 */
-			ModelHandler(GeneralConfig &);
+			ModelHandler(GeneralConfig & p_gConfig):
+			    gConfig(p_gConfig),
+				m_generalClock(){}
 
 			/**
 			 * Destructeur.
 			 */
-			~ModelHandler();
+			~ModelHandler(){}
 
 			/**
 			 * Initialisation de la partie modèle de la plateforme SARAH (virtuelle).
 			 * \return 	true si l'initialisation s'est bien passée, false sinon.
 			 */
-			virtual bool Init();
+			virtual bool Init()
+			{
+			    return true;
+			}
 
 			/**
 			 * Chargement des modèles 2D, 3D et autres (virtuelle).
 			 * \todo	Réfléchir à la vraie utilité de cette fonction.
 			 * \return 	true si le chargement s'est bien passée, false sinon.
 			 */
-			virtual bool Load();
+			virtual bool Load()
+			{
+			    return true;
+			}
 
 			/**
 			 * Notification de dessin généralement adressée à la Vue (virtuelle).
 			 */
-			virtual void Draw();
+			virtual void Draw(){}
 
 		public:
 

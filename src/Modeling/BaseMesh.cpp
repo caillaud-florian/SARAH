@@ -10,7 +10,8 @@ namespace Modeling
 		m_name(p_meshName),
 		m_vertices(),
 		m_faces(),
-		m_colors()
+		m_colors(),
+		m_glMesh()
 	{
 		m_vertices.push_back(geo::Vertex(-50, -50, -50));
 		m_colors.push_back(geo::Vertex(1, 0, 0));
@@ -23,15 +24,17 @@ namespace Modeling
 
 		Face face; face.push_back(0); face.push_back(1); face.push_back(2);
 		m_faces.push_back(face);
+
+		m_glMesh = new GLfloat[(m_vertices.size() + m_colors.size()) * 3];
 	}
 
-	/*
-	 * \todo Ne pas oublier de delete le pointeur glMesh !
-	 */
+	BaseMesh::~BaseMesh()
+	{
+		delete m_glMesh;
+	}
+
 	GLfloat * BaseMesh::Draw()
 	{
-		GLfloat * glMesh = new GLfloat[(m_vertices.size() + m_colors.size()) * 3];
-		
 	    glEnableClientState(GL_VERTEX_ARRAY);
 	    glEnableClientState(GL_COLOR_ARRAY);
 
@@ -40,16 +43,16 @@ namespace Modeling
 
 		for(unsigned int i = 0; i < m_vertices.size(); ++i)
 		{
-			glMesh[(i*6)] = m_vertices[i].GetX();
-			glMesh[(i*6) + 1] = m_vertices[i].GetY();
-			glMesh[(i*6) + 2] = m_vertices[i].GetZ();
+			m_glMesh[(i*6)] = m_vertices[i].GetX();
+			m_glMesh[(i*6) + 1] = m_vertices[i].GetY();
+			m_glMesh[(i*6) + 2] = m_vertices[i].GetZ();
 
-			glMesh[(i*6) + 3] = m_colors[i].GetX();
-			glMesh[(i*6) + 4] = m_colors[i].GetY();
-			glMesh[(i*6) + 5] = m_colors[i].GetZ();
+			m_glMesh[(i*6) + 3] = m_colors[i].GetX();
+			m_glMesh[(i*6) + 4] = m_colors[i].GetY();
+			m_glMesh[(i*6) + 5] = m_colors[i].GetZ();
 		}
 		    
-		return glMesh;
+		return m_glMesh;
 	}
 	
 }

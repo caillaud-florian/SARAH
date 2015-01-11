@@ -11,8 +11,9 @@
 #define MYMODELHANDLER
 
 #include "../Kernel/ModelHandler.hpp"
-
 #include "../Modeling/BaseMesh.hpp"
+
+#include "MyDrawableObject.hpp"
 
 /**
  * \namespace 	Sarah
@@ -25,7 +26,7 @@ namespace Sarah
 	 * \class 	MyModelHandler
 	 * \brief 	Personnalisation de la classe ModelHandler.
 	 */
-	class MyModelHandler : public Kernel::ModelHandler, public Kernel::Observable<GLfloat *>
+	class MyModelHandler : public Kernel::ModelHandler
 	{
 
 		public:
@@ -42,6 +43,8 @@ namespace Sarah
 			 *						et avec lequel on initialise le controleur.
 			 */
 			MyModelHandler(Kernel::GeneralConfig &);
+
+			~MyModelHandler();
 
 			/**
 			 * Initialisation de la partie modèle de la plateforme SARAH
@@ -67,6 +70,8 @@ namespace Sarah
 			 * \brief 	Pointeur vers le maillage chargé dans la plateforme.
 			 */
 			Modeling::BaseMesh	m_loadedMesh;
+
+			MyDrawableObject * 	m_drawObj;
 
 	};
 
