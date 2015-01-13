@@ -1,6 +1,30 @@
 cmake_minimum_required(VERSION 2.8)
 
-####################################
+#################################################### BUILD OPTIONS ###############################################
+
+#Déclaration du type de build : Debug ou Release
+if(NOT DEFINED CMAKE_BUILD_TYPE)
+   set(CMAKE_BUILD_TYPE Debug CACHE STRING "L'option de build par défaut est : Debug.")
+endif(NOT DEFINED CMAKE_BUILD_TYPE)
+
+#Déclaration des flags commun debug/release
+set(CMAKE_CXX_FLAGS "-std=c++0x")
+
+if(CMAKE_BUILD_TYPE EQUAL Debug)
+	enable_testing()
+	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${CMAKE_CXX_FLAGS} -Wall")
+else(CMAKE_BUILD_TYPE EQUAL Debug)
+	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${CMAKE_CXX_FLAGS}")
+endif(CMAKE_BUILD_TYPE EQUAL Debug)
+
+message("=========================== ${CMAKE_BUILD_TYPE} ===========================")
+
+#if(UNIX)
+#  set(CTEST_MEMORYCHECK_COMMAND, "usr/bin/valgrind")
+#  set(CTEST_MEMORYCHECK_COMMAND_OPTIONS, "--trace-children=yes --leak-check=full")
+#endif()
+
+#################################################### PROJET #####################################################
 
 #Déclaration du projet
 project(SARAH_Project)
@@ -9,16 +33,9 @@ project(SARAH_Project)
 set (SARAH_Project_VERSION_MAJOR 1)
 set (SARAH_Project_VERSION_MINOR 0)
 
-enable_testing()
-
-####################################
-
-#Déclaration de la version de c++ -> C++11 ici
-set(CMAKE_CXX_FLAGS "-std=c++0x")
-
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
-####################################
+#################################################### PACKAGES #####################################################
 
 #Génération de la documentation
 find_package(Doxygen)
@@ -40,21 +57,36 @@ include_directories(doc)
 
 ####################################
 
+#Recherche de la librairie OpenGL
+find_package(OpenGL)
+
+if(NOT OPENGL_FOUND)
+	message(FATAL_ERROR "Impossible to build SARAH : OpenGL unfound.")
+endif(NOT OPENGL_FOUND)
+
+include_directories(${OPENGL_INCLUDE_DIR})
+
+####################################
+
 #Recherche de la librairie SFML 2.2
-find_package(SFML 2 COMPONENTS system window graphics REQUIRED)
+find_package(SFML 2 COMPONENTS system window graphics)
 
 if(NOT SFML_FOUND)
 	message(FATAL_ERROR "Impossible to build SARAH : SFML unfound.")
 endif(NOT SFML_FOUND)
 
+include_directories(${SFML_INCLUDE_DIR})
+
 ####################################
 
 #Recherche de certains composants de la librairie boost
-find_package(Boost 1.54 COMPONENTS regex REQUIRED)
+find_package(Boost 1.54 COMPONENTS regex)
 
 if(NOT Boost_FOUND)
 	message(FATAL_ERROR "Impossible to build SARAH : Boost Regex unfound.")
 endif(NOT Boost_FOUND)
+
+#################################################### INCLUDES ###################################################
 
 include_directories(src)
 add_subdirectory(src)
