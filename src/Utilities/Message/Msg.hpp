@@ -72,7 +72,7 @@ namespace msg
 			{
 				std::cout << pHead << ' ';
 				if (sizeof...(pTail))
-					Msg(pTail...);
+					Msg(pTail);
 				else
 					Msg();
 			}

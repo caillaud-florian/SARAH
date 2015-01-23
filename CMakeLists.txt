@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 2.8)
 
 #################################################### BUILD OPTIONS ###############################################
 
+#Définition de clang comme compilateur par défaut
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
+
 #Déclaration du type de build : Debug ou Release
 if(NOT DEFINED CMAKE_BUILD_TYPE)
    set(CMAKE_BUILD_TYPE Debug CACHE STRING "L'option de build par défaut est : Debug.")
@@ -10,19 +14,19 @@ endif(NOT DEFINED CMAKE_BUILD_TYPE)
 #Déclaration des flags commun debug/release
 set(CMAKE_CXX_FLAGS "-std=c++0x")
 
-if(CMAKE_BUILD_TYPE EQUAL Debug)
-	enable_testing()
+if(CMAKE_BUILD_TYPE STREQUAL Debug)
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} ${CMAKE_CXX_FLAGS} -Wall")
-else(CMAKE_BUILD_TYPE EQUAL Debug)
+else(CMAKE_BUILD_TYPE STREQUAL Debug)
 	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${CMAKE_CXX_FLAGS}")
-endif(CMAKE_BUILD_TYPE EQUAL Debug)
+endif(CMAKE_BUILD_TYPE STREQUAL Debug)
 
-message("=========================== ${CMAKE_BUILD_TYPE} ===========================")
+message("======================== ${CMAKE_BUILD_TYPE} CLANG ========================")
 
-#if(UNIX)
-#  set(CTEST_MEMORYCHECK_COMMAND, "usr/bin/valgrind")
-#  set(CTEST_MEMORYCHECK_COMMAND_OPTIONS, "--trace-children=yes --leak-check=full")
-#endif()
+if(UNIX)
+	find_program( MEMORYCHECK_COMMAND valgrind )
+  	set(CTEST_MEMORYCHECK_COMMAND, ${MEMORYCHECK_COMMAND})
+  	set(CTEST_MEMORYCHECK_COMMAND_OPTIONS, "--trace-children=yes --leak-check=full")
+endif()
 
 #################################################### PROJET #####################################################
 
@@ -90,3 +94,7 @@ endif(NOT Boost_FOUND)
 
 include_directories(src)
 add_subdirectory(src)
+
+if(CMAKE_BUILD_TYPE STREQUAL Debug)
+	include(CTest)
+endif(CMAKE_BUILD_TYPE STREQUAL Debug)
